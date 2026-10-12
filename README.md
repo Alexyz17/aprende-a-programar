@@ -4,9 +4,9 @@ Cursos de programación **gratuitos y abiertos** en español: desde tu primer pr
 
 **Web:** https://alexvillar10.gitlab.io/aprende-a-programar/
 
-- 35 cursos: Programar desde cero, HTML y CSS, JavaScript, TypeScript, React, Next.js, Vue, PHP, Laravel, Eloquent, APIs REST, Node.js, Python, Machine Learning, SQL, PostgreSQL, Redis, Git, Linux, Docker, Kubernetes, GitHub Actions, microservicios, IA, n8n, Kotlin, Swift, testing, algoritmos y seguridad web.
+- 38 cursos: Programar desde cero, HTML y CSS, Tailwind CSS, JavaScript, TypeScript, React, Next.js, Vue, PHP, Laravel, Eloquent, Laravel + Inertia + React, APIs REST, Node.js, Python, Machine Learning, SQL, PostgreSQL, Redis, Git, Linux, Docker, Kubernetes, GitHub Actions, microservicios, IA, n8n, Kotlin, Swift, testing, algoritmos y seguridad web.
 - 9 rutas de aprendizaje (frontend, backend PHP, full stack Laravel + React, DevOps, datos e IA…).
-- 15 juegos para practicar: tests, completar código, ordenar bloques y "adivina la salida".
+- 24 juegos para practicar: tests, completar código, ordenar bloques y "adivina la salida".
 - Progreso y récords guardados solo en el navegador.
 
 ## Tecnología
