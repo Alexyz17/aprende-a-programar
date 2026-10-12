@@ -1,0 +1,19 @@
+# Publica la web en GitLab Pages en cada push a la rama principal.
+# URL resultante: https://<usuario>.gitlab.io/<proyecto>/
+image: node:22-alpine
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - .npm/
+
+pages:
+  script:
+    - npm install --cache .npm --prefer-offline --no-audit --no-fund
+    - npm run build
+    - rm -rf public && mv dist public
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH

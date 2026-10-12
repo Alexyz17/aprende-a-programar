@@ -1,0 +1,32 @@
+@import 'tailwindcss';
+
+@source './**/*.{ts,tsx}';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+:focus-visible { outline: 2px solid #6366f1; outline-offset: 2px; }
+
+/* ── Lecciones en Markdown ── */
+.md-lesson .md-code { position: relative; }
+.md-lesson .md-code-lang {
+    position: absolute; top: 0.5rem; right: 0.75rem;
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em;
+    color: #94a3b8; font-family: ui-monospace, monospace;
+}
+.md-lesson .md-table { overflow-x: auto; }
+.md-lesson .md-table table { display: table; }
+.md-lesson blockquote.md-callout { border-left-width: 4px; }
+.md-lesson blockquote.md-consejo { border-color: #10b981; background: rgb(16 185 129 / 0.08); }
+.md-lesson blockquote.md-atención, .md-lesson blockquote.md-importante { border-color: #f59e0b; background: rgb(245 158 11 / 0.08); }
+.md-lesson blockquote.md-ejercicio, .md-lesson blockquote.md-reto { border-color: #8b5cf6; background: rgb(139 92 246 / 0.08); }
+.md-lesson hr { margin: 2.5rem 0; border-color: rgb(148 163 184 / 0.3); }
+.md-lesson img { max-width: 100%; border-radius: 0.75rem; }

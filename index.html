@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aprende a Programar — cursos gratuitos y abiertos en español</title>
+    <meta name="description" content="Cursos de programación gratuitos y abiertos en español: Linux, Git, HTML y CSS, JavaScript, TypeScript, React, PHP y Laravel, Python, bases de datos, Docker, Kubernetes e IA. Sin registro y sin pagos." />
+    <meta name="theme-color" content="#030712" />
+    <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
+    <link rel="preconnect" href="https://fonts.bunny.net" />
+    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700,800&display=swap" rel="stylesheet" />
+    <script>
+      // Aplica el tema guardado antes del primer render para evitar parpadeos.
+      try {
+        var t = localStorage.getItem('theme');
+        var dark = t ? t === 'dark' : true;
+        document.documentElement.classList.toggle('dark', dark);
+      } catch (e) {}
+    </script>
+  </head>
+  <body class="bg-white dark:bg-gray-950">
+    <noscript>Esta web necesita JavaScript para mostrar los cursos.</noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
