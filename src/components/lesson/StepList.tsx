@@ -19,12 +19,12 @@ export default function StepList({ steps }: StepListProps) {
                         {/* Step indicator + connector */}
                         <div className="flex flex-col items-center">
                             <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full
-                                            bg-indigo-600 text-white text-sm font-bold shadow-md shadow-indigo-900/50
-                                            ring-2 ring-indigo-500/30">
+                                            bg-emerald-700 text-white text-sm font-bold shadow-md shadow-emerald-900/50
+                                            ring-2 ring-emerald-600/30">
                                 {index + 1}
                             </div>
                             {!isLast && (
-                                <div className="mt-1 w-px flex-1 bg-gradient-to-b from-indigo-600/50 to-indigo-600/10 min-h-[2rem]" />
+                                <div className="mt-1 w-px flex-1 bg-gradient-to-b from-emerald-700/50 to-emerald-700/10 min-h-[2rem]" />
                             )}
                         </div>
 

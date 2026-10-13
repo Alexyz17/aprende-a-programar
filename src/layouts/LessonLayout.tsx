@@ -47,7 +47,7 @@ const articleClass = `
     [&_h1]:text-slate-900 dark:[&_h1]:text-white [&_h1]:mb-6 [&_h1]:mt-0 [&_h1]:leading-tight
 
     [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:tracking-tight [&_h2]:scroll-mt-24
-    [&_h2]:text-indigo-700 dark:[&_h2]:text-indigo-300 [&_h2]:mt-12 [&_h2]:mb-4
+    [&_h2]:text-emerald-800 dark:[&_h2]:text-emerald-300 [&_h2]:mt-12 [&_h2]:mb-4
     [&_h2]:pb-3 [&_h2]:border-b [&_h2]:border-slate-200 dark:[&_h2]:border-slate-800
 
     [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:scroll-mt-24
@@ -62,7 +62,7 @@ const articleClass = `
 
     [&_ul]:my-4 [&_ul]:space-y-2 [&_ul]:pl-0 [&_ul]:list-none
     [&_ul>li]:relative [&_ul>li]:pl-5 [&_ul>li]:leading-relaxed
-    [&_ul>li]:before:content-['▸'] [&_ul>li]:before:text-indigo-500 dark:[&_ul>li]:before:text-indigo-400
+    [&_ul>li]:before:content-['▸'] [&_ul>li]:before:text-emerald-600 dark:[&_ul>li]:before:text-emerald-400
     [&_ul>li]:before:absolute [&_ul>li]:before:left-0
 
     [&_ol]:my-4 [&_ol]:space-y-2 [&_ol]:pl-6 [&_ol]:list-decimal
@@ -82,11 +82,11 @@ const articleClass = `
     [&_th]:border [&_th]:border-slate-200 dark:[&_th]:border-slate-700
     [&_td]:p-2.5 [&_td]:align-top [&_td]:border [&_td]:border-slate-200 dark:[&_td]:border-slate-800
 
-    [&_a]:text-indigo-600 dark:[&_a]:text-indigo-400 [&_a]:underline [&_a]:underline-offset-2
-    [&_a]:decoration-indigo-500/50 [&_a:hover]:text-indigo-500
+    [&_a]:text-emerald-700 dark:[&_a]:text-emerald-400 [&_a]:underline [&_a]:underline-offset-2
+    [&_a]:decoration-emerald-600/50 [&_a:hover]:text-emerald-600
 
-    [&_blockquote]:border-l-4 [&_blockquote]:border-indigo-500
-    [&_blockquote]:bg-indigo-50 dark:[&_blockquote]:bg-indigo-950/30 [&_blockquote]:px-5 [&_blockquote]:py-3
+    [&_blockquote]:border-l-4 [&_blockquote]:border-emerald-600
+    [&_blockquote]:bg-emerald-50 dark:[&_blockquote]:bg-emerald-950/30 [&_blockquote]:px-5 [&_blockquote]:py-3
     [&_blockquote]:rounded-r-xl [&_blockquote]:my-6 [&_blockquote]:not-italic [&_blockquote]:leading-relaxed
     [&_blockquote_p]:mb-0
 `;
@@ -197,11 +197,11 @@ export default function LessonLayout({
                                                 href={mod.id}
                                                 className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${
                                                     isActive
-                                                        ? 'bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400 font-medium'
+                                                        ? 'bg-emerald-50 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-400 font-medium'
                                                         : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800'
                                                 }`}
                                             >
-                                                <ChevronRight className="h-3.5 w-3.5 shrink-0 text-indigo-500" aria-hidden />
+                                                <ChevronRight className="h-3.5 w-3.5 shrink-0 text-emerald-600" aria-hidden />
                                                 <span className="truncate">{mod.title}</span>
                                             </Link>
                                         );
@@ -219,7 +219,7 @@ export default function LessonLayout({
                         <div className="mt-12 rounded-2xl border border-dashed border-gray-300 dark:border-gray-700 p-5 text-sm text-gray-600 dark:text-gray-400 flex flex-col sm:flex-row sm:items-center gap-3 justify-between">
                             <span>¿Has visto un error o quieres ampliar esta lección? El contenido es abierto.</span>
                             <a href={`${SITE.repo}/-/issues/new?issue[title]=${encodeURIComponent('Lección: ' + title)}`} target="_blank" rel="noopener noreferrer"
-                               className="inline-flex items-center gap-1.5 font-medium text-indigo-600 dark:text-indigo-400 hover:underline shrink-0">
+                               className="inline-flex items-center gap-1.5 font-medium text-emerald-700 dark:text-emerald-400 hover:underline shrink-0">
                                 <Pencil className="h-4 w-4" aria-hidden /> Proponer una mejora
                             </a>
                         </div>
@@ -229,15 +229,15 @@ export default function LessonLayout({
                 {(prev || next) && (
                     <nav aria-label="Navegación entre cursos" className="mt-12 pt-8 border-t border-gray-100 dark:border-gray-800 grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {prev ? (
-                            <Link href={prev} className="group rounded-xl border border-gray-200 dark:border-gray-800 p-4 hover:border-indigo-400 transition-colors">
+                            <Link href={prev} className="group rounded-xl border border-gray-200 dark:border-gray-800 p-4 hover:border-emerald-400 transition-colors">
                                 <span className="flex items-center gap-1.5 text-xs text-gray-500"><ArrowLeft className="h-3.5 w-3.5" aria-hidden /> Anterior</span>
-                                <span className="block font-medium mt-1 group-hover:text-indigo-600 dark:group-hover:text-indigo-400">{prevTitle ?? 'Curso anterior'}</span>
+                                <span className="block font-medium mt-1 group-hover:text-emerald-700 dark:group-hover:text-emerald-400">{prevTitle ?? 'Curso anterior'}</span>
                             </Link>
                         ) : <div className="hidden sm:block" />}
                         {next && (
-                            <Link href={next} className="group rounded-xl border border-gray-200 dark:border-gray-800 p-4 text-right hover:border-indigo-400 transition-colors">
+                            <Link href={next} className="group rounded-xl border border-gray-200 dark:border-gray-800 p-4 text-right hover:border-emerald-400 transition-colors">
                                 <span className="flex items-center justify-end gap-1.5 text-xs text-gray-500">Siguiente <ArrowRight className="h-3.5 w-3.5" aria-hidden /></span>
-                                <span className="block font-medium mt-1 group-hover:text-indigo-600 dark:group-hover:text-indigo-400">{nextTitle ?? 'Siguiente curso'}</span>
+                                <span className="block font-medium mt-1 group-hover:text-emerald-700 dark:group-hover:text-emerald-400">{nextTitle ?? 'Siguiente curso'}</span>
                             </Link>
                         )}
                     </nav>

@@ -52,7 +52,7 @@ function QuizInput({ q, seed, disabled, onSubmit, result }: { q: Question; seed:
             {options.map((opt, i) => {
                 const chosen = result?.given === opt;
                 const right = disabled && opt === q.answer;
-                let cls = 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/20';
+                let cls = 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20';
                 if (disabled) {
                     if (right) cls = 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-800 dark:text-emerald-300';
                     else if (chosen) cls = 'border-red-500 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300';
@@ -86,9 +86,9 @@ function TextInput({ q, type, disabled, onSubmit }: { q: Question; type: Game['t
                 <label className="sr-only" htmlFor="respuesta">{label}</label>
                 <input id="respuesta" ref={ref} value={value} onChange={(e) => setValue(e.target.value)} disabled={disabled}
                        placeholder={label} autoComplete="off" spellCheck={false}
-                       className="flex-1 font-mono text-sm px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 focus:border-indigo-500 outline-none disabled:opacity-60" />
+                       className="flex-1 font-mono text-sm px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 focus:border-emerald-600 outline-none disabled:opacity-60" />
                 <button type="submit" disabled={disabled || !value.trim()}
-                        className="px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm disabled:opacity-50">
+                        className="px-5 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-sm disabled:opacity-50">
                     Comprobar
                 </button>
             </form>
@@ -136,7 +136,7 @@ function OrderInput({ q, seed, disabled, onSubmit }: { q: Question; seed: number
                 </div>
             )}
             {!disabled && (
-                <button type="button" onClick={() => onSubmit(order)} className="px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm">
+                <button type="button" onClick={() => onSubmit(order)} className="px-5 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-sm">
                     Comprobar orden
                 </button>
             )}
@@ -180,7 +180,7 @@ function Play({ game }: { game: Game }) {
             <div className="text-center max-w-lg mx-auto">
                 <Trophy className="h-12 w-12 mx-auto text-amber-500 mb-4" aria-hidden />
                 <h2 className="text-2xl font-bold mb-2">{pct >= 80 ? '¡Muy bien!' : pct >= 50 ? '¡Buen intento!' : 'Sigue practicando'}</h2>
-                <p className="text-5xl font-black text-indigo-600 dark:text-indigo-400 my-4">{finished.score}<span className="text-xl text-gray-500"> / {max}</span></p>
+                <p className="text-5xl font-black text-emerald-700 dark:text-emerald-400 my-4">{finished.score}<span className="text-xl text-gray-500"> / {max}</span></p>
                 <p className="text-gray-600 dark:text-gray-400 mb-2">
                     {Object.values(results).filter((r) => r.correct).length} de {game.questions.length} respuestas correctas ({pct} %).
                 </p>
@@ -190,7 +190,7 @@ function Play({ game }: { game: Game }) {
                         <RotateCcw className="h-4 w-4" aria-hidden /> Repetir
                     </button>
                     {course && (
-                        <Link href={`/lecciones/${course.slug}`} className="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm">
+                        <Link href={`/lecciones/${course.slug}`} className="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-sm">
                             <BookOpen className="h-4 w-4" aria-hidden /> Repasar: {course.title}
                         </Link>
                     )}
@@ -210,7 +210,7 @@ function Play({ game }: { game: Game }) {
             </div>
             <div className="h-2 w-full bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden mb-8"
                  role="progressbar" aria-valuemin={0} aria-valuemax={game.questions.length} aria-valuenow={index + (answered ? 1 : 0)}>
-                <div className="h-full bg-indigo-500 transition-all" style={{ width: `${((index + (answered ? 1 : 0)) / game.questions.length) * 100}%` }} />
+                <div className="h-full bg-emerald-600 transition-all" style={{ width: `${((index + (answered ? 1 : 0)) / game.questions.length) * 100}%` }} />
             </div>
 
             <h2 className="text-xl font-bold mb-6">
@@ -238,7 +238,7 @@ function Play({ game }: { game: Game }) {
                         )}
                         <p className="text-sm text-gray-700 dark:text-gray-300">{q.explanation}</p>
                         <button type="button" onClick={next} autoFocus
-                                className="mt-4 flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm">
+                                className="mt-4 flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-sm">
                             {index < game.questions.length - 1 ? 'Siguiente pregunta' : 'Ver resultado'} <ChevronRight className="h-4 w-4" aria-hidden />
                         </button>
                     </div>
@@ -260,7 +260,7 @@ export default function JuegosShow({ slug }: { slug: string }) {
                     <ArrowLeft className="h-4 w-4" aria-hidden /> Todos los juegos
                 </Link>
                 <div className="mb-8">
-                    <p className="text-xs font-medium text-indigo-600 dark:text-indigo-400 mb-1">{GAME_TYPE_LABEL[game.type]} · Dificultad {DIFFICULTY_LABEL[game.difficulty].toLowerCase()}</p>
+                    <p className="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-1">{GAME_TYPE_LABEL[game.type]} · Dificultad {DIFFICULTY_LABEL[game.difficulty].toLowerCase()}</p>
                     <h1 className="text-3xl font-extrabold tracking-tight mb-2">{game.title}</h1>
                     <p className="text-gray-600 dark:text-gray-400">{game.description}</p>
                 </div>

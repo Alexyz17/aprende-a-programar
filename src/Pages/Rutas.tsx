@@ -27,7 +27,7 @@ export default function Rutas() {
                                     <div>
                                         <h2 id={`t-${p.slug}`} className="text-xl font-bold mb-1">{p.title}</h2>
                                         <p className="text-gray-600 dark:text-gray-400 text-sm">{p.description}</p>
-                                        <p className="flex items-start gap-2 text-sm mt-3"><Target className="h-4 w-4 text-indigo-500 shrink-0 mt-0.5" aria-hidden /> <span><strong>Objetivo:</strong> {p.goal}</span></p>
+                                        <p className="flex items-start gap-2 text-sm mt-3"><Target className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" aria-hidden /> <span><strong>Objetivo:</strong> {p.goal}</span></p>
                                     </div>
                                     <div className="sm:text-right shrink-0">
                                         <p className="text-sm text-gray-500 dark:text-gray-400">{done} de {courses.length} cursos</p>

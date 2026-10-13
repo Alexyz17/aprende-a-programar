@@ -13,7 +13,7 @@ html { scroll-behavior: smooth; }
     html { scroll-behavior: auto; }
     *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
-:focus-visible { outline: 2px solid #6366f1; outline-offset: 2px; }
+:focus-visible { outline: 2px solid #059669; outline-offset: 2px; }
 
 /* ── Lecciones en Markdown ── */
 .md-lesson .md-code { position: relative; }
@@ -25,7 +25,7 @@ html { scroll-behavior: smooth; }
 .md-lesson .md-table { overflow-x: auto; }
 .md-lesson .md-table table { display: table; }
 .md-lesson blockquote.md-callout { border-left-width: 4px; }
-.md-lesson blockquote.md-consejo { border-color: #10b981; background: rgb(16 185 129 / 0.08); }
+.md-lesson blockquote.md-consejo { border-color: #0ea5e9; background: rgb(14 165 233 / 0.08); }
 .md-lesson blockquote.md-atención, .md-lesson blockquote.md-importante { border-color: #f59e0b; background: rgb(245 158 11 / 0.08); }
 .md-lesson blockquote.md-ejercicio, .md-lesson blockquote.md-reto { border-color: #8b5cf6; background: rgb(139 92 246 / 0.08); }
 .md-lesson hr { margin: 2.5rem 0; border-color: rgb(148 163 184 / 0.3); }

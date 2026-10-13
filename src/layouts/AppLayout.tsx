@@ -1,5 +1,5 @@
 import { Link, usePath } from '@/lib/router';
-import { Code2, Menu, X, Sun, Moon, Gamepad2, BookOpen, BarChart3, HeartHandshake, Map } from 'lucide-react';
+import { GraduationCap, Menu, X, Sun, Moon, Gamepad2, BookOpen, BarChart3, HeartHandshake, Map } from 'lucide-react';
 import { useState } from 'react';
 import { SITE } from '@/site';
 
@@ -30,14 +30,14 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
     return (
         <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors">
-            <a href="#contenido" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] bg-indigo-600 text-white px-3 py-2 rounded-lg">
+            <a href="#contenido" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] bg-emerald-700 text-white px-3 py-2 rounded-lg">
                 Saltar al contenido
             </a>
             <header className="border-b border-gray-200 dark:border-gray-800 bg-white/85 dark:bg-gray-950/85 backdrop-blur-md sticky top-0 z-50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16 gap-4">
                         <Link href="/" className="flex items-center gap-2 font-bold text-lg shrink-0">
-                            <Code2 className="h-6 w-6 text-indigo-500" aria-hidden />
+                            <GraduationCap className="h-6 w-6 text-emerald-600" aria-hidden />
                             <span>{SITE.name}</span>
                         </Link>
 
@@ -49,7 +49,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                                     aria-current={isActive(href) ? 'page' : undefined}
                                     className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm transition-colors ${
                                         isActive(href)
-                                            ? 'text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-900/30 font-medium'
+                                            ? 'text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-900/30 font-medium'
                                             : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800'
                                     }`}
                                 >
@@ -100,7 +100,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-10">
                         <div>
                             <div className="flex items-center gap-2 font-bold text-lg mb-3">
-                                <Code2 className="h-5 w-5 text-indigo-500" aria-hidden />
+                                <GraduationCap className="h-5 w-5 text-emerald-600" aria-hidden />
                                 <span>{SITE.name}</span>
                             </div>
                             <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed max-w-xs">

@@ -19,7 +19,7 @@ export default function Privacidad() {
                 <h2 className="text-xl font-bold text-gray-900 dark:text-white pt-4">Servicios de terceros</h2>
                 <p>La web se aloja en GitLab Pages, que puede registrar datos técnicos de las visitas (como la dirección IP) según su propia política de privacidad. La tipografía se sirve desde Bunny Fonts, que no usa cookies. Si una lección incluye un vídeo de YouTube, se carga solo al visitar esa lección.</p>
                 <h2 className="text-xl font-bold text-gray-900 dark:text-white pt-4">Contacto</h2>
-                <p>Para cualquier duda, abre una incidencia en el <a href={SITE.repo} className="text-indigo-600 dark:text-indigo-400 underline" target="_blank" rel="noopener noreferrer">repositorio del proyecto</a>.</p>
+                <p>Para cualquier duda, abre una incidencia en el <a href={SITE.repo} className="text-emerald-700 dark:text-emerald-400 underline" target="_blank" rel="noopener noreferrer">repositorio del proyecto</a>.</p>
             </div>
         </AppLayout>
     );

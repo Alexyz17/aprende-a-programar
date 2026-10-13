@@ -43,7 +43,7 @@ export default function Progreso() {
                 <section className="mb-12">
                     <h2 className="text-xl font-bold mb-4">Cursos completados</h2>
                     {done.length === 0 ? (
-                        <p className="text-gray-600 dark:text-gray-400">Todavía ninguno. Al terminar un curso, pulsa "Marcar como completado". <Link href="/rutas" className="text-indigo-600 dark:text-indigo-400 underline">Elige una ruta</Link> para empezar.</p>
+                        <p className="text-gray-600 dark:text-gray-400">Todavía ninguno. Al terminar un curso, pulsa "Marcar como completado". <Link href="/rutas" className="text-emerald-700 dark:text-emerald-400 underline">Elige una ruta</Link> para empezar.</p>
                     ) : (
                         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                             {done.map((c) => (
@@ -60,7 +60,7 @@ export default function Progreso() {
                 <section className="mb-12">
                     <h2 className="text-xl font-bold mb-4">Récords en los juegos</h2>
                     {played.length === 0 ? (
-                        <p className="text-gray-600 dark:text-gray-400">Aún no has jugado. <Link href="/juegos" className="text-indigo-600 dark:text-indigo-400 underline">Prueba un juego</Link>.</p>
+                        <p className="text-gray-600 dark:text-gray-400">Aún no has jugado. <Link href="/juegos" className="text-emerald-700 dark:text-emerald-400 underline">Prueba un juego</Link>.</p>
                     ) : (
                         <table className="w-full text-sm">
                             <thead><tr className="text-left text-gray-500 border-b border-gray-200 dark:border-gray-800"><th className="py-2 font-medium">Juego</th><th className="py-2 font-medium">Récord</th><th className="py-2 font-medium hidden sm:table-cell">Partidas</th></tr></thead>

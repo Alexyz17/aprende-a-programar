@@ -36,7 +36,7 @@ export default function CoursesIndex() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
                 <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">Todos los cursos</h1>
                 <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-2xl">
-                    {COURSES.length} cursos gratuitos y abiertos. Si no sabes por dónde empezar, mira las <Link href="/rutas" className="text-indigo-600 dark:text-indigo-400 underline">rutas de aprendizaje</Link>.
+                    {COURSES.length} cursos gratuitos y abiertos. Si no sabes por dónde empezar, mira las <Link href="/rutas" className="text-emerald-700 dark:text-emerald-400 underline">rutas de aprendizaje</Link>.
                 </p>
 
                 <div className="flex flex-col lg:flex-row gap-4 mb-6">
@@ -44,13 +44,13 @@ export default function CoursesIndex() {
                         <Search className="h-4 w-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" aria-hidden />
                         <label htmlFor="buscar" className="sr-only">Buscar cursos</label>
                         <input id="buscar" type="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Buscar: docker, react, sql…"
-                               className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 focus:border-indigo-500 outline-none" />
+                               className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 focus:border-emerald-600 outline-none" />
                     </div>
                     <div className="flex gap-2" role="group" aria-label="Nivel">
                         {LEVELS.map((l) => (
                             <button key={l} type="button" onClick={() => setLevel(l)} aria-pressed={level === l}
                                     className={`px-3.5 py-2 rounded-xl text-sm font-medium border transition-colors ${level === l
-                                        ? 'bg-indigo-600 text-white border-indigo-600'
+                                        ? 'bg-emerald-700 text-white border-emerald-700'
                                         : 'border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800'}`}>
                                 {l}
                             </button>

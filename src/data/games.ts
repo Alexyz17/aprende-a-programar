@@ -262,11 +262,11 @@ export const GAMES: Game[] = [
         questions: [
             { question: '<nav class="flex items-center ___"> <!-- logo a la izquierda, enlaces a la derecha -->', answer: 'justify-between', explanation: 'justify-between reparte el espacio libre entre los hijos, empujándolos a los extremos.', points: 100 },
             { question: '<div class="grid grid-cols-1 ___:grid-cols-3"> <!-- 3 columnas desde 768px -->', answer: 'md', explanation: 'md: aplica desde 768 px. Tailwind es mobile first: sin prefijo se aplica siempre.', points: 100 },
-            { question: '<button class="bg-indigo-600 ___:bg-indigo-500"> <!-- más claro al pasar el ratón -->', answer: 'hover', explanation: 'Los estados se escriben como prefijos: hover:, focus-visible:, active:, disabled:…', points: 80 },
+            { question: '<button class="bg-emerald-700 ___:bg-emerald-600"> <!-- más claro al pasar el ratón -->', answer: 'hover', explanation: 'Los estados se escriben como prefijos: hover:, focus-visible:, active:, disabled:…', points: 80 },
             { question: '<body class="bg-white ___:bg-gray-950"> <!-- fondo oscuro en modo oscuro -->', answer: 'dark', explanation: 'dark: aplica la clase cuando el modo oscuro está activo.', points: 80 },
             { question: '<div class="bg-black/___"> <!-- negro al 50 % de opacidad -->', answer: '50', explanation: 'La barra indica la opacidad del color: bg-black/50, text-white/80…', points: 120 },
             { question: '<main class="grid min-h-screen ___"> <!-- centrar el contenido en ambos ejes -->', answer: 'place-items-center', explanation: 'En un grid, place-items-center centra en horizontal y en vertical a la vez.', points: 150 },
-            { question: '<a class="___ block"> <h3 class="group-hover:text-indigo-600">…</h3> </a>', answer: 'group', explanation: 'Marca el padre con group para que los hijos reaccionen a su hover con group-hover:.', points: 150 },
+            { question: '<a class="___ block"> <h3 class="group-hover:text-emerald-700">…</h3> </a>', answer: 'group', explanation: 'Marca el padre con group para que los hijos reaccionen a su hover con group-hover:.', points: 150 },
         ],
     },
     {

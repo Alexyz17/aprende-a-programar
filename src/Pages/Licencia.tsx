@@ -9,7 +9,7 @@ export default function Licencia() {
                 <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">Licencia</h1>
                 <h2 className="text-xl font-bold text-gray-900 dark:text-white pt-2">Contenido de los cursos: {SITE.license}</h2>
                 <p>
-                    Los textos, ejemplos y ejercicios se publican con licencia <a href={SITE.licenseUrl} className="text-indigo-600 dark:text-indigo-400 underline" target="_blank" rel="noopener noreferrer">Creative Commons Atribución-CompartirIgual 4.0 Internacional</a>. Puedes:
+                    Los textos, ejemplos y ejercicios se publican con licencia <a href={SITE.licenseUrl} className="text-emerald-700 dark:text-emerald-400 underline" target="_blank" rel="noopener noreferrer">Creative Commons Atribución-CompartirIgual 4.0 Internacional</a>. Puedes:
                 </p>
                 <ul className="list-disc pl-6 space-y-1">
                     <li><strong>Compartir</strong>: copiar y redistribuir el material en cualquier medio o formato.</li>

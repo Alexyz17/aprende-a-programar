@@ -39,7 +39,7 @@ function Loading() {
     return (
         <AppLayout>
             <div className="min-h-[50vh] flex items-center justify-center" role="status" aria-live="polite">
-                <div className="h-8 w-8 rounded-full border-2 border-indigo-500 border-t-transparent animate-spin" />
+                <div className="h-8 w-8 rounded-full border-2 border-emerald-600 border-t-transparent animate-spin" />
                 <span className="sr-only">Cargando…</span>
             </div>
         </AppLayout>

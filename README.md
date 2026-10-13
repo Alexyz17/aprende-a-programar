@@ -68,4 +68,4 @@ Convenciones del Markdown:
 - Contenido de los cursos: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
 - Código de la plataforma: MIT.
 
-Proyecto de [Alex Villar Gracia](https://alexvillar10.gitlab.io). Nació como *darkcode*, una plataforma de cursos con Laravel 13, Inertia y React, y se convirtió en esta web estática para que el contenido sea gratuito y esté siempre disponible.
+Proyecto de [Alex Villar Gracia](https://alexvillar10.gitlab.io). Es una web estática, sin servidor ni base de datos, pensada para que el contenido sea gratuito y esté siempre disponible.

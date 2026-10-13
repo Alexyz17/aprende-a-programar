@@ -21,14 +21,14 @@ export default function Colabora() {
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     {WAYS.map(({ icon: Icon, title, text, cta, href }) => (
                         <li key={title} className="rounded-2xl border border-gray-200 dark:border-gray-800 p-6 flex flex-col">
-                            <Icon className="h-6 w-6 text-indigo-500 mb-3" aria-hidden />
+                            <Icon className="h-6 w-6 text-emerald-600 mb-3" aria-hidden />
                             <h2 className="font-bold text-lg mb-1.5">{title}</h2>
                             <p className="text-sm text-gray-600 dark:text-gray-400 flex-1 mb-4">{text}</p>
                             {cta === 'Copiar enlace' ? (
                                 <button type="button" onClick={(e) => { navigator.clipboard?.writeText(href); e.currentTarget.textContent = 'Enlace copiado'; }}
-                                        className="self-start text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:underline">{cta}</button>
+                                        className="self-start text-sm font-semibold text-emerald-700 dark:text-emerald-400 hover:underline">{cta}</button>
                             ) : (
-                                <a href={href} target="_blank" rel="noopener noreferrer" className="self-start text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:underline">{cta} ↗</a>
+                                <a href={href} target="_blank" rel="noopener noreferrer" className="self-start text-sm font-semibold text-emerald-700 dark:text-emerald-400 hover:underline">{cta} ↗</a>
                             )}
                         </li>
                     ))}

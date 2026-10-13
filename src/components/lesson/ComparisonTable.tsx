@@ -19,7 +19,7 @@ export default function ComparisonTable({ headers, rows, caption }: ComparisonTa
                             <th
                                 key={i}
                                 className={`px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider
-                                            ${i === 0 ? 'text-indigo-700 dark:text-indigo-300' : 'text-slate-700 dark:text-slate-400'}`}
+                                            ${i === 0 ? 'text-emerald-800 dark:text-emerald-300' : 'text-slate-700 dark:text-slate-400'}`}
                             >
                                 {header}
                             </th>
@@ -37,7 +37,7 @@ export default function ComparisonTable({ headers, rows, caption }: ComparisonTa
                                     key={ci}
                                     className={`px-5 py-3.5 leading-relaxed
                                                 ${ci === 0
-                                                    ? 'font-mono text-indigo-700 dark:text-indigo-300 font-medium text-xs'
+                                                    ? 'font-mono text-emerald-800 dark:text-emerald-300 font-medium text-xs'
                                                     : 'text-slate-700 dark:text-slate-300'
                                                 }`}
                                 >
