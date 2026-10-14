@@ -3,7 +3,7 @@ import { lazy, createElement } from 'react';
 import type { LucideIcon } from 'lucide-react';
 import {
     Terminal, Server, Code2, Brain, Zap, Shield, Smartphone, Globe, Database,
-    GitBranch, Cloud, Cpu, Package, Layers, Lightbulb, Palette, FlaskConical, Network,
+    GitBranch, Cloud, Cpu, Package, Layers, Lightbulb, Palette, FlaskConical, Network, BarChart3,
 } from 'lucide-react';
 
 export type Level = 'Básico' | 'Intermedio' | 'Avanzado';
@@ -34,7 +34,7 @@ const md = (slug: string, loader: () => Promise<{ default: string }>) =>
 export const CATEGORIES = [
     'Empieza aquí', 'Web', 'Linux', 'PHP / Laravel', 'JavaScript', 'Frontend', 'Python',
     'Bases de datos', 'Git', 'DevOps', 'Servidores', 'Seguridad', 'Arquitectura',
-    'Inteligencia Artificial', 'Automatización', 'Mobile',
+    'Análisis de datos', 'Inteligencia Artificial', 'Automatización', 'Mobile',
 ] as const;
 
 /**
@@ -94,6 +94,8 @@ export const COURSES: Course[] = [
     { slug: 'sql-basico', title: 'SQL desde cero', description: 'Diseña tablas y consulta datos: SELECT, filtros, JOIN, agregaciones, claves, índices y transacciones con ejemplos prácticos.', duration: '3h 30min', lessons: 15, level: 'Básico', category: 'Bases de datos', icon: Database, iconColor: 'text-violet-400', bg: 'bg-violet-500/10', page: md('sql-basico', () => import('@/content/sql-basico.md?raw')) },
     { slug: 'postgresql-avanzado', title: 'PostgreSQL avanzado', description: 'Índices, EXPLAIN ANALYZE, CTEs, window functions, particionado y búsqueda semántica con pgvector.', duration: '4h 30min', lessons: 22, level: 'Avanzado', category: 'Bases de datos', icon: Database, iconColor: 'text-violet-400', bg: 'bg-violet-500/10', page: p(() => import('@/Pages/Lecciones/PostgreSQLAvanzado')) },
     { slug: 'redis-cache', title: 'Redis: caché y mensajería', description: 'Estructuras de datos, patrones de caché, expiración, pub/sub, streams y colas.', duration: '3h 30min', lessons: 18, level: 'Intermedio', category: 'Bases de datos', icon: Database, iconColor: 'text-violet-400', bg: 'bg-violet-500/10', page: md('redis-cache', () => import('@/content/redis-cache.md?raw')) },
+    // ── Análisis de datos ──
+    { slug: 'power-bi', title: 'Power BI desde cero', description: 'Del CSV al informe publicado: Power Query, modelo en estrella, DAX con CALCULATE e inteligencia de tiempo, visualizaciones, RLS y buenas prácticas.', duration: '4h 00min', lessons: 16, level: 'Básico', category: 'Análisis de datos', icon: BarChart3, iconColor: 'text-lime-400', bg: 'bg-lime-500/10', page: md('power-bi', () => import('@/content/power-bi.md?raw')) },
     // ── Arquitectura ──
     { slug: 'microservicios-diseno', title: 'Diseño de microservicios', description: 'Cuándo usarlos, cómo dividir servicios, API Gateway, mensajería, sagas, Event Sourcing y CQRS.', duration: '4h 30min', lessons: 20, level: 'Avanzado', category: 'Arquitectura', icon: Layers, iconColor: 'text-orange-400', bg: 'bg-orange-500/10', page: md('microservicios-diseno', () => import('@/content/microservicios-diseno.md?raw')) },
 ];

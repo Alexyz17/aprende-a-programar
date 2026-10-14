@@ -366,6 +366,21 @@ export const GAMES: Game[] = [
             { question: 'Ordena una consulta con agrupación:', options: ['SELECT cliente_id, SUM(total) AS gastado', 'FROM pedidos', "WHERE estado = 'pagado'", 'GROUP BY cliente_id', 'HAVING SUM(total) > 100', 'ORDER BY gastado DESC'], explanation: 'WHERE filtra filas antes de agrupar; HAVING filtra grupos después de GROUP BY.', points: 200 },
             { question: 'Ordena una consulta con JOIN:', options: ['SELECT c.nombre, p.total', 'FROM clientes c', 'JOIN pedidos p ON p.cliente_id = c.id', 'WHERE p.total > 50'], explanation: 'Los JOIN van justo después del FROM y antes del WHERE.', points: 150 },        ],
     },
+    {
+        slug: 'quiz-power-bi',
+        title: 'Test de Power BI',
+        description: 'Power Query, modelo en estrella, medidas DAX y contexto de filtro.',
+        type: 'quiz', course: 'power-bi', difficulty: 'medium',
+        questions: [
+            { question: '¿Qué herramienta de Power BI usas para limpiar y transformar los datos antes de cargarlos?', options: ['Power Query', 'DAX', 'El panel de Visualizaciones', 'La vista de modelo'], answer: 'Power Query', explanation: 'Power Query registra cada transformación como un paso y la repite en cada actualización.', points: 80 },
+            { question: 'En un esquema en estrella, ¿qué tabla tiene muchas filas con lo que se mide (ventas, unidades)?', options: ['La tabla de hechos', 'La tabla de dimensiones', 'La tabla calendario', 'La tabla de medidas'], answer: 'La tabla de hechos', explanation: 'Los hechos van en el centro; las dimensiones (productos, tiendas, fechas) los describen y filtran.', points: 100 },
+            { question: '¿Qué diferencia a una medida de una columna calculada?', options: ['La medida se calcula al mostrarla según los filtros; la columna se guarda fila a fila', 'Ninguna, son lo mismo', 'La columna calculada solo existe en Power Query', 'La medida solo funciona con fechas'], answer: 'La medida se calcula al mostrarla según los filtros; la columna se guarda fila a fila', explanation: 'Para números que se agregan, usa medidas: no ocupan memoria y respetan el contexto de filtro.', points: 120 },
+            { question: '¿Qué función de DAX evalúa una expresión cambiando el contexto de filtro?', options: ['CALCULATE', 'SUMX', 'RELATED', 'FORMAT'], answer: 'CALCULATE', explanation: 'CALCULATE([Ventas], tiendas[tienda] = "Online") suma solo las ventas online.', points: 150 },
+            { question: '¿Por qué usar DIVIDE en lugar del operador /?', options: ['Devuelve vacío en vez de error si el denominador es 0', 'Es más rápido siempre', 'Redondea el resultado', 'Solo DIVIDE funciona con medidas'], answer: 'Devuelve vacío en vez de error si el denominador es 0', explanation: 'DIVIDE(a, b) evita errores de división por cero en celdas sin datos.', points: 100 },
+            { question: '¿Qué necesitas para que SAMEPERIODLASTYEAR funcione bien?', options: ['Una tabla de fechas continua marcada como tabla de fechas', 'Una relación varios a varios', 'El modo DirectQuery', 'Una columna de texto con el año'], answer: 'Una tabla de fechas continua marcada como tabla de fechas', explanation: 'Las funciones de inteligencia de tiempo necesitan un calendario sin huecos relacionado con los hechos.', points: 150 },
+            { question: '¿Qué permite la seguridad a nivel de fila (RLS)?', options: ['Que cada persona vea solo sus datos en el mismo informe', 'Cifrar el archivo .pbix', 'Ocultar columnas en la vista de informe', 'Publicar en la web sin iniciar sesión'], answer: 'Que cada persona vea solo sus datos en el mismo informe', explanation: 'Un rol con un filtro DAX como [ciudad] = "Terrassa" limita las filas visibles.', points: 120 },
+        ],
+    },
 ];
 
 export const gameBySlug = (slug: string) => GAMES.find((g) => g.slug === slug);

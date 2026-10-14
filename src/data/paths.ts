@@ -55,7 +55,7 @@ export const PATHS: LearningPath[] = [
         title: 'Datos e inteligencia artificial',
         description: 'Python para datos, machine learning y modelos de lenguaje.',
         goal: 'Entrenar modelos sencillos e integrar IA en tus aplicaciones.',
-        courses: ['python-basico', 'python-avanzado', 'sql-basico', 'machine-learning', 'ia-programacion', 'fine-tuning', 'n8n'],
+        courses: ['python-basico', 'python-avanzado', 'sql-basico', 'power-bi', 'machine-learning', 'ia-programacion', 'fine-tuning', 'n8n'],
     },
     {
         slug: 'mobile',
