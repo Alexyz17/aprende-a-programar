@@ -4,9 +4,13 @@ Cursos de programación **gratuitos y abiertos** en español: desde tu primer pr
 
 **Web:** https://alexvillar10.gitlab.io/aprende-a-programar/
 
-- Cursos de todo tipo, y cada vez más: programar desde cero, HTML y CSS, Tailwind CSS, JavaScript, TypeScript, React, Next.js, Vue, PHP, Laravel, Eloquent, Laravel + Inertia + React, APIs REST, Node.js, Python, Machine Learning, SQL, PostgreSQL, Redis, Git, Linux, Docker, Kubernetes, GitHub Actions, microservicios, IA, n8n, Kotlin, Swift, testing, algoritmos y seguridad web.
-- Rutas de aprendizaje (frontend, backend PHP, full stack Laravel + React, DevOps, datos e IA…).
+- Cursos de todo tipo, y cada vez más: programar desde cero, HTML y CSS, Tailwind CSS, JavaScript, TypeScript, React, Next.js, Vue, PHP, Laravel, Eloquent, Laravel + Inertia + React, APIs REST, Node.js, Python, Machine Learning, SQL, PostgreSQL, Redis, Git, Linux, Docker, Kubernetes, GitHub Actions, microservicios, IA, n8n, Kotlin, Swift, Java, MongoDB, expresiones regulares, accesibilidad web, Excel, Power BI, testing, algoritmos y seguridad web.
+- Rutas de aprendizaje dibujadas como líneas de metro: cada curso es una parada, con la próxima parada marcada y las correspondencias con otras rutas.
 - Juegos para practicar: tests, completar código, ordenar bloques y "adivina la salida".
+- Buscador global (`Ctrl + K` o `/`) que encuentra cursos, rutas, juegos y apartados concretos de las lecciones.
+- Pregunta del día, racha de días estudiando, apartados marcados como leídos y "sigue donde lo dejaste".
+- Diploma descargable al terminar una ruta, generado en el navegador.
+- Resaltado de sintaxis propio y botón de copiar en todos los bloques de código.
 - Progreso y récords guardados solo en el navegador.
 
 ## Tecnología
@@ -17,6 +21,7 @@ Cursos de programación **gratuitos y abiertos** en español: desde tu primer pr
 | Vite | Desarrollo y build |
 | Tailwind CSS 4 | Estilos, tema claro y oscuro |
 | marked | Lecciones escritas en Markdown |
+| Vitest + jsdom | Tests del progreso, el buscador, el resaltado, los juegos y la integridad del catálogo |
 | Router propio (History API) | Navegación sin dependencias, con soporte de subdirectorio |
 | GitLab CI + GitLab Pages | Publicación automática y gratuita |
 
@@ -27,6 +32,7 @@ No hay servidor ni base de datos: es una web estática. Tras el build, `scripts/
 ```bash
 npm install
 npm run dev        # http://localhost:5173
+npm test           # tests con Vitest
 npm run build      # genera dist/
 npm run preview
 ```
@@ -44,7 +50,8 @@ src/
 │   └── games.ts        # juegos y preguntas
 ├── components/         # tarjetas, Markdown, bloques de código…
 ├── layouts/            # AppLayout y LessonLayout
-├── lib/                # router, progreso (localStorage)
+├── lib/                # router, progreso (localStorage), buscador, resaltado de sintaxis
+├── test/               # tests de Vitest
 └── site.ts             # nombre, URL y licencia de la web
 ```
 
