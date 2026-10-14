@@ -52,3 +52,13 @@ describe('router', () => {
         expect(withBase('/cursos').endsWith('/cursos')).toBe(true);
     });
 });
+
+describe('fichas de los cursos', () => {
+    const mds = import.meta.glob<string>('/src/content/*.md', { query: '?raw', import: 'default', eager: true });
+    it('el número de apartados coincide con los ## de cada lección en Markdown', () => {
+        for (const [file, md] of Object.entries(mds)) {
+            const course = COURSES.find((c) => file.endsWith(`/${c.slug}.md`));
+            if (course) expect(course.lessons, course.slug).toBe((md.match(/^## /gm) ?? []).length);
+        }
+    });
+});
