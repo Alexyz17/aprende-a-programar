@@ -10,6 +10,7 @@ const KEY_SCORES = 'aap:scores';
 const KEY_READ = 'aap:read';
 const KEY_DAYS = 'aap:days';
 const KEY_DAILY = 'aap:daily';
+const KEY_LAST = 'aap:last';
 
 export interface ScoreEntry {
     best: number;
@@ -65,6 +66,8 @@ interface Snapshot {
     /** Días con actividad, en formato AAAA-MM-DD de la hora local. */
     days: string[];
     daily: DailyAnswer | null;
+    /** Última lección abierta, para "Sigue donde lo dejaste". */
+    last: { slug: string; sections: number } | null;
 }
 function load(): Snapshot {
     return {
@@ -73,9 +76,10 @@ function load(): Snapshot {
         read: read<Record<string, string[]>>(KEY_READ, {}),
         days: read<string[]>(KEY_DAYS, []),
         daily: read<DailyAnswer | null>(KEY_DAILY, null),
+        last: read<Snapshot['last']>(KEY_LAST, null),
     };
 }
-const EMPTY: Snapshot = { completed: [], scores: {}, read: {}, days: [], daily: null };
+const EMPTY: Snapshot = { completed: [], scores: {}, read: {}, days: [], daily: null, last: null };
 let snapshot: Snapshot = typeof window === 'undefined' ? EMPTY : load();
 
 /** Fecha local AAAA-MM-DD (no UTC: a las 00:30 en Madrid ya es "hoy"). */
@@ -111,6 +115,10 @@ export function toggleRead(slug: string, id: string) {
         markActive();
     }
     write(KEY_READ, { ...snapshot.read, [slug]: [...current] });
+}
+
+export function setLastLesson(slug: string, sections: number) {
+    if (snapshot.last?.slug !== slug || snapshot.last.sections !== sections) write(KEY_LAST, { slug, sections });
 }
 
 export function answerDaily(given: string, correct: boolean) {
@@ -151,4 +159,5 @@ export function resetProgress() {
     write(KEY_READ, {});
     write(KEY_DAYS, []);
     write(KEY_DAILY, null);
+    write(KEY_LAST, null);
 }

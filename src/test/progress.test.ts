@@ -48,3 +48,11 @@ describe('progreso en localStorage', () => {
         expect(read('aap:daily')).toEqual({ date: dayKey(), given: 'O(n)', correct: true });
     });
 });
+
+describe('última lección', () => {
+    it('guarda el curso y su número de apartados', async () => {
+        const { setLastLesson } = await import('@/lib/progress');
+        setLastLesson('docker', 8);
+        expect(read('aap:last')).toEqual({ slug: 'docker', sections: 8 });
+    });
+});

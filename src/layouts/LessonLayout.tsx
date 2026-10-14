@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import { BookOpen, Clock, CheckCircle2, Circle, ArrowLeft, ArrowRight, Pencil, Gamepad2, PartyPopper, ChevronRight } from 'lucide-react';
 import VideoPlayer from '@/components/VideoPlayer';
 import { COURSES, coursePath } from '@/data/courses';
-import { toggleCompleted, toggleRead, useProgress } from '@/lib/progress';
+import { setLastLesson, toggleCompleted, toggleRead, useProgress } from '@/lib/progress';
 import { GAMES } from '@/data/games';
 import { SITE } from '@/site';
 import { enhanceCodeBlocks, handleCopyClick } from '@/lib/highlight';
@@ -111,6 +111,8 @@ export default function LessonLayout({
         const hash = decodeURIComponent(window.location.hash.slice(1));
         if (hash) document.getElementById(hash)?.scrollIntoView({ block: 'start' });
     }, [slug]);
+
+    useEffect(() => { if (COURSES.some((c) => c.slug === slug)) setLastLesson(slug, modules.length); }, [slug, modules.length]);
 
     // Resaltado de sintaxis y botón de copiar en todos los bloques de código (Markdown y TSX).
     const articleRef = useRef<HTMLElement>(null);

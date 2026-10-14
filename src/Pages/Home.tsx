@@ -6,6 +6,7 @@ import { GAMES } from '@/data/games';
 import { PATHS } from '@/data/paths';
 import CourseCard from '@/components/CourseCard';
 import DailyQuestion from '@/components/DailyQuestion';
+import ContinueCard from '@/components/ContinueCard';
 import { SITE } from '@/site';
 
 const FEATURED = ['programar-desde-cero', 'html-css', 'javascript-moderno', 'python-basico', 'laravel', 'docker'];
@@ -56,6 +57,7 @@ export default function Home() {
 
             {/* Pregunta del día */}
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-14">
+                <ContinueCard />
                 <DailyQuestion />
             </div>
 
