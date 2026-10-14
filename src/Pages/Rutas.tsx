@@ -2,6 +2,7 @@ import AppLayout from '@/layouts/AppLayout';
 import { Link } from '@/lib/router';
 import { CheckCircle2, Circle, Target } from 'lucide-react';
 import { PATHS } from '@/data/paths';
+import Diploma from '@/components/Diploma';
 import { courseBySlug, coursePath } from '@/data/courses';
 import { useProgress } from '@/lib/progress';
 import { SITE } from '@/site';
@@ -51,6 +52,12 @@ export default function Rutas() {
                                         );
                                     })}
                                 </ol>
+                                {courses.length > 0 && done === courses.length && (
+                                    <div className="mt-5 pt-5 border-t border-gray-100 dark:border-gray-800 flex flex-wrap items-center justify-between gap-3">
+                                        <p className="text-sm font-medium text-emerald-800 dark:text-emerald-300">¡Ruta terminada! Llévate tu diploma.</p>
+                                        <Diploma path={p.title} courses={courses.map((c) => c.title)} />
+                                    </div>
+                                )}
                             </section>
                         );
                     })}

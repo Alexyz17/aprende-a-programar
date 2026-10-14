@@ -34,7 +34,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     // Ctrl+K / Cmd+K o "/" abren el buscador desde cualquier página.
     useEffect(() => {
         const onKey = (e: KeyboardEvent) => {
-            const typing = (e.target as HTMLElement).closest('input, textarea, select, [contenteditable="true"]');
+            const typing = e.target instanceof Element && e.target.closest('input, textarea, select, [contenteditable="true"]');
             if ((e.key === 'k' && (e.ctrlKey || e.metaKey)) || (e.key === '/' && !typing)) {
                 e.preventDefault();
                 setSearchOpen(true);

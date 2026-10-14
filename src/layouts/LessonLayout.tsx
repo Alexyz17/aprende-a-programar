@@ -2,10 +2,11 @@ import AppLayout from '@/layouts/AppLayout';
 import { Link } from '@/lib/router';
 import { usePath } from '@/lib/router';
 import { useEffect, useRef, useState } from 'react';
-import { ChevronRight, BookOpen, Clock, CheckCircle2, Circle, ArrowLeft, ArrowRight, Pencil } from 'lucide-react';
+import { BookOpen, Clock, CheckCircle2, Circle, ArrowLeft, ArrowRight, Pencil, Gamepad2, PartyPopper, ChevronRight } from 'lucide-react';
 import VideoPlayer from '@/components/VideoPlayer';
 import { COURSES, coursePath } from '@/data/courses';
-import { toggleCompleted, useProgress } from '@/lib/progress';
+import { toggleCompleted, toggleRead, useProgress } from '@/lib/progress';
+import { GAMES } from '@/data/games';
 import { SITE } from '@/site';
 import { enhanceCodeBlocks, handleCopyClick } from '@/lib/highlight';
 
@@ -98,8 +99,12 @@ export default function LessonLayout({
 }: LessonLayoutProps) {
     const path = usePath();
     const slug = path.replace(/^\/lecciones\//, '');
-    const { completed } = useProgress();
+    const { completed, read } = useProgress();
     const isDone = completed.includes(slug);
+    const readIds = new Set(read[slug] ?? []);
+    const readCount = modules.filter((m) => readIds.has(m.id)).length;
+    const allRead = modules.length > 0 && readCount === modules.length;
+    const games = GAMES.filter((g) => g.course === slug);
 
     // Las lecciones se cargan bajo demanda: al llegar con #ancla, desplazarse cuando ya están pintadas.
     useEffect(() => {
@@ -190,25 +195,41 @@ export default function LessonLayout({
                                 {isDone ? <CheckCircle2 className="h-4 w-4" aria-hidden /> : <Circle className="h-4 w-4" aria-hidden />}
                                 {isDone ? 'Curso completado' : 'Marcar como completado'}
                             </button>
+                            {allRead && !isDone && (
+                                <p className="-mt-2 mb-4 text-xs text-emerald-800 dark:text-emerald-300 flex items-center gap-1.5" role="status">
+                                    <PartyPopper className="h-3.5 w-3.5" aria-hidden /> Has leído todos los apartados.
+                                </p>
+                            )}
 
                             {modules.length > 0 && (
                                 <nav aria-label="Índice del curso" className="border-t border-gray-100 dark:border-gray-800 pt-4 space-y-1">
-                                    <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Índice</p>
+                                    <div className="flex items-center justify-between mb-2">
+                                        <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Índice</p>
+                                        <p className="text-xs text-gray-500 dark:text-gray-400">{readCount}/{modules.length} leídos</p>
+                                    </div>
+                                    <div className="h-1 bg-gray-100 dark:bg-gray-800 rounded-full mb-3 overflow-hidden" role="progressbar" aria-label="Apartados leídos" aria-valuemin={0} aria-valuemax={modules.length} aria-valuenow={readCount}>
+                                        <div className="h-full bg-emerald-500 transition-[width]" style={{ width: `${(readCount / modules.length) * 100}%` }} />
+                                    </div>
                                     {modules.map((mod) => {
                                         const isActive = mod.id === activeId;
+                                        const isRead = readIds.has(mod.id);
                                         return (
-                                            <Link
-                                                key={mod.id}
-                                                href={mod.id}
-                                                className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${
-                                                    isActive
-                                                        ? 'bg-emerald-50 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-400 font-medium'
-                                                        : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800'
-                                                }`}
-                                            >
-                                                <ChevronRight className="h-3.5 w-3.5 shrink-0 text-emerald-600" aria-hidden />
-                                                <span className="truncate">{mod.title}</span>
-                                            </Link>
+                                            <div key={mod.id} className={`flex items-center rounded-lg transition-colors ${
+                                                isActive ? 'bg-emerald-50 dark:bg-emerald-900/30' : 'hover:bg-gray-50 dark:hover:bg-gray-800'
+                                            }`}>
+                                                <button type="button" onClick={() => toggleRead(slug, mod.id)} aria-pressed={isRead}
+                                                        aria-label={`${isRead ? 'Desmarcar' : 'Marcar'} como leído: ${mod.title}`}
+                                                        title={isRead ? 'Leído' : 'Marcar como leído'}
+                                                        className="p-2 pr-1 shrink-0 text-emerald-600 hover:text-emerald-800 dark:hover:text-emerald-300">
+                                                    {isRead ? <CheckCircle2 className="h-4 w-4" aria-hidden /> : <Circle className="h-4 w-4 text-gray-400" aria-hidden />}
+                                                </button>
+                                                <Link href={mod.id} className={`flex-1 min-w-0 py-2 pr-3 text-sm truncate ${
+                                                    isActive ? 'text-emerald-800 dark:text-emerald-400 font-medium'
+                                                        : isRead ? 'text-gray-500' : 'text-gray-600 dark:text-gray-400'
+                                                }`}>
+                                                    {mod.title}
+                                                </Link>
+                                            </div>
                                         );
                                     })}
                                 </nav>
@@ -220,6 +241,24 @@ export default function LessonLayout({
                     <div className="flex-1 min-w-0">
                         {videoId && <VideoPlayer videoId={videoId} title={title} />}
                         <article ref={articleRef} className={articleClass} onClick={(e) => handleCopyClick(e.target as HTMLElement)}>{children}</article>
+
+                        {/* Cierre de la lección: completar y practicar */}
+                        <section aria-label="Final de la lección" className="mt-14 rounded-3xl bg-gradient-to-br from-emerald-700 to-teal-800 text-white p-6 sm:p-8">
+                            <p className="text-sm text-emerald-100 mb-1">Final de la lección</p>
+                            <h2 className="text-2xl font-bold mb-4">{isDone ? '¡Curso completado!' : '¿Lo tienes?'}</h2>
+                            <div className="flex flex-wrap gap-3">
+                                <button type="button" onClick={() => toggleCompleted(slug)} aria-pressed={isDone}
+                                        className="inline-flex items-center gap-2 bg-white text-emerald-900 font-semibold px-5 py-3 rounded-xl hover:bg-emerald-50">
+                                    {isDone ? <CheckCircle2 className="h-4 w-4" aria-hidden /> : <Circle className="h-4 w-4" aria-hidden />}
+                                    {isDone ? 'Completado' : 'Marcar como completado'}
+                                </button>
+                                {games.map((g) => (
+                                    <Link key={g.slug} href={`/juegos/${g.slug}`} className="inline-flex items-center gap-2 border border-white/40 font-semibold px-5 py-3 rounded-xl hover:bg-white/10">
+                                        <Gamepad2 className="h-4 w-4" aria-hidden /> {g.title}
+                                    </Link>
+                                ))}
+                            </div>
+                        </section>
 
                         <div className="mt-12 rounded-2xl border border-dashed border-gray-300 dark:border-gray-700 p-5 text-sm text-gray-600 dark:text-gray-400 flex flex-col sm:flex-row sm:items-center gap-3 justify-between">
                             <span>¿Has visto un error o quieres ampliar esta lección? El contenido es abierto.</span>

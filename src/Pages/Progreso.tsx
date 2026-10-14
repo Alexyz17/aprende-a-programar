@@ -1,14 +1,22 @@
 import AppLayout from '@/layouts/AppLayout';
 import { Link } from '@/lib/router';
 import { useState } from 'react';
-import { CheckCircle2, Trophy, Trash2, Info } from 'lucide-react';
+import { CheckCircle2, Trophy, Trash2, Info, Flame } from 'lucide-react';
 import { COURSES, coursePath } from '@/data/courses';
 import { GAMES } from '@/data/games';
-import { useProgress, resetProgress } from '@/lib/progress';
+import { useProgress, resetProgress, streak, dayKey } from '@/lib/progress';
 import { SITE } from '@/site';
 
 export default function Progreso() {
-    const { completed, scores } = useProgress();
+    const { completed, scores, days } = useProgress();
+    const racha = streak(days);
+    // Últimas 4 semanas, de la más antigua a hoy.
+    const recent = Array.from({ length: 28 }, (_, i) => {
+        const d = new Date();
+        d.setDate(d.getDate() - (27 - i));
+        return { key: dayKey(d), label: d.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' }) };
+    });
+    const daySet = new Set(days);
     const [confirm, setConfirm] = useState(false);
     const done = COURSES.filter((c) => completed.includes(c.slug));
     const played = GAMES.filter((g) => scores[g.slug]);
@@ -23,6 +31,26 @@ export default function Progreso() {
                     <Info className="h-4 w-4 shrink-0 mt-0.5" aria-hidden />
                     Se guarda solo en este navegador. Si cambias de dispositivo o borras los datos del navegador, empezarás de cero.
                 </p>
+
+                <section aria-labelledby="t-racha" className="rounded-2xl border border-gray-200 dark:border-gray-800 p-5 mb-4 flex flex-col sm:flex-row sm:items-center gap-5">
+                    <div className="shrink-0">
+                        <p id="t-racha" className="text-sm text-gray-500 dark:text-gray-400">Racha</p>
+                        <p className="text-3xl font-bold inline-flex items-center gap-2">
+                            <Flame className={`h-7 w-7 ${racha ? 'text-orange-500' : 'text-gray-400'}`} aria-hidden />
+                            {racha} {racha === 1 ? 'día' : 'días'}
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">{days.length} días estudiando en total</p>
+                    </div>
+                    <ol className="grid grid-cols-7 md:grid-cols-14 gap-1.5 sm:ml-auto w-fit" aria-label="Actividad de las últimas cuatro semanas">
+                        {recent.map(({ key, label }) => {
+                            const on = daySet.has(key);
+                            return (
+                                <li key={key} title={label} aria-label={`${label}: ${on ? 'con actividad' : 'sin actividad'}`}
+                                    className={`h-5 w-5 rounded-full ${on ? 'bg-emerald-500 ring-2 ring-emerald-500/30' : 'bg-gray-200 dark:bg-gray-800'} ${key === dayKey() ? 'outline-2 outline-offset-2 outline-dashed outline-emerald-600' : ''}`} />
+                            );
+                        })}
+                    </ol>
+                </section>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
                     <div className="rounded-2xl border border-gray-200 dark:border-gray-800 p-5">

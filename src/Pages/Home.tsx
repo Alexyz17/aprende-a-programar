@@ -5,6 +5,7 @@ import { COURSES, CATEGORIES } from '@/data/courses';
 import { GAMES } from '@/data/games';
 import { PATHS } from '@/data/paths';
 import CourseCard from '@/components/CourseCard';
+import DailyQuestion from '@/components/DailyQuestion';
 import { SITE } from '@/site';
 
 const FEATURED = ['programar-desde-cero', 'html-css', 'javascript-moderno', 'python-basico', 'laravel', 'docker'];
@@ -52,6 +53,11 @@ export default function Home() {
                     </dl>
                 </div>
             </section>
+
+            {/* Pregunta del día */}
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-14">
+                <DailyQuestion />
+            </div>
 
             {/* Principios */}
             <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
