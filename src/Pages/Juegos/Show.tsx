@@ -15,7 +15,7 @@ interface Result {
 
 const normalise = (s: string) => s.trim().replace(/\s+/g, ' ').replace(/^["'`]|["'`]$/g, '');
 
-function isCorrect(q: Question, type: Game['type'], value: string | number[]): boolean {
+export function isCorrect(q: Question, type: Game['type'], value: string | number[]): boolean {
     if (type === 'order_blocks') {
         const order = value as number[];
         return order.every((v, i) => v === i);

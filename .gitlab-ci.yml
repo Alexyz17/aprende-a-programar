@@ -10,6 +10,7 @@ cache:
 pages:
   script:
     - npm install --cache .npm --prefer-offline --no-audit --no-fund
+    - npm test
     - npm run build
     - rm -rf public && mv dist public
   artifacts:
