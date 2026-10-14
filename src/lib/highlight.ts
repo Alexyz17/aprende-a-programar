@@ -43,7 +43,7 @@ export function highlight(code: string, lang = ''): string {
         '(?<v>\\$[A-Za-z_]\\w*)',
         // Límites de palabra que entienden acentos: \b solo conoce ASCII y partiría "Librerías".
         '(?<n>(?<![\\p{L}\\w])\\d+(?:[.,]\\d+)?(?![\\p{L}\\w]))',
-        '(?<f>(?<![\\p{L}\\w.\\/])[A-Za-z_]\\w*(?=\\s*\\())',
+        '(?<f>(?<![\\p{L}\\w\\/])[A-Za-z_]\\w*(?=\\s*\\())',
         '(?<w>(?<![\\p{L}\\w.\\/\\-])[A-Za-z_]\\w*(?![\\p{L}\\w]))',
     ].join('|'), 'gmu');
 

@@ -1,6 +1,8 @@
 import { Link, usePath } from '@/lib/router';
-import { GraduationCap, Menu, X, Sun, Moon, Gamepad2, BookOpen, BarChart3, HeartHandshake, Map } from 'lucide-react';
-import { useState } from 'react';
+import { GraduationCap, Menu, X, Sun, Moon, Gamepad2, BookOpen, BarChart3, HeartHandshake, Map, Search } from 'lucide-react';
+import { lazy, Suspense, useEffect, useState } from 'react';
+
+const SearchPalette = lazy(() => import('@/components/SearchPalette'));
 import { SITE } from '@/site';
 
 function useTheme() {
@@ -27,6 +29,20 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     const [menuOpen, setMenuOpen] = useState(false);
     const path = usePath();
     const isActive = (href: string) => path === href || path.startsWith(href + '/');
+    const [searchOpen, setSearchOpen] = useState(false);
+
+    // Ctrl+K / Cmd+K o "/" abren el buscador desde cualquier página.
+    useEffect(() => {
+        const onKey = (e: KeyboardEvent) => {
+            const typing = (e.target as HTMLElement).closest('input, textarea, select, [contenteditable="true"]');
+            if ((e.key === 'k' && (e.ctrlKey || e.metaKey)) || (e.key === '/' && !typing)) {
+                e.preventDefault();
+                setSearchOpen(true);
+            }
+        };
+        window.addEventListener('keydown', onKey);
+        return () => window.removeEventListener('keydown', onKey);
+    }, []);
 
     return (
         <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors">
@@ -62,6 +78,16 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                         <div className="flex items-center gap-1">
                             <button
                                 type="button"
+                                onClick={() => setSearchOpen(true)}
+                                aria-label="Buscar (Ctrl + K)"
+                                className="flex items-center gap-2 p-2 lg:pl-3 lg:pr-2 rounded-lg text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 lg:border lg:border-gray-200 lg:dark:border-gray-800 transition-colors"
+                            >
+                                <Search className="h-5 w-5 lg:h-4 lg:w-4" aria-hidden />
+                                <span className="hidden lg:inline text-sm">Buscar</span>
+                                <kbd className="hidden lg:inline text-[0.65rem] font-mono border border-gray-300 dark:border-gray-700 rounded px-1">Ctrl K</kbd>
+                            </button>
+                            <button
+                                type="button"
                                 onClick={toggle}
                                 aria-label={dark ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'}
                                 className="p-2 rounded-lg text-gray-500 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
@@ -92,6 +118,8 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                     </nav>
                 )}
             </header>
+
+            {searchOpen && <Suspense fallback={null}><SearchPalette onClose={() => setSearchOpen(false)} /></Suspense>}
 
             <main id="contenido" className="flex-1">{children}</main>
 

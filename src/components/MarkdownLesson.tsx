@@ -4,6 +4,7 @@ import LessonLayout from '@/layouts/LessonLayout';
 import { courseBySlug, coursePath } from '@/data/courses';
 import { navigate, withBase } from '@/lib/router';
 import { SITE } from '@/site';
+import { slugify } from '@/lib/slugify';
 
 /**
  * Lecciones escritas en Markdown (src/content/<slug>.md).
@@ -13,10 +14,6 @@ import { SITE } from '@/site';
  * - Los bloques ```lenguaje se muestran como código.
  * - Las citas que empiezan por "> **Consejo:**", "> **Atención:**" o "> **Nota:**" se destacan.
  */
-
-const slugify = (text: string) =>
-    text.toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu, '')
-        .replace(/<[^>]+>/g, '').replace(/[^\w\s-]/g, '').trim().replace(/\s+/g, '-');
 
 const escapeHtml = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
