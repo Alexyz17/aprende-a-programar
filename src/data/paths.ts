@@ -41,7 +41,7 @@ export const PATHS: LearningPath[] = [
         title: 'Backend con Node.js',
         description: 'JavaScript también en el servidor.',
         goal: 'Crear APIs con Node.js y Express y conectarlas a una base de datos.',
-        courses: ['javascript-moderno', 'typescript-basico', 'node-express', 'sql-basico', 'postgresql-avanzado', 'redis-cache', 'testing'],
+        courses: ['javascript-moderno', 'typescript-basico', 'node-express', 'sql-basico', 'mongodb', 'postgresql-avanzado', 'redis-cache', 'testing'],
     },
     {
         slug: 'devops',
@@ -69,6 +69,6 @@ export const PATHS: LearningPath[] = [
         title: 'Preparar entrevistas técnicas',
         description: 'Lo que suelen preguntar en procesos para puestos junior.',
         goal: 'Resolver problemas de código y explicar tus decisiones con claridad.',
-        courses: ['algoritmos', 'git-esencial', 'sql-basico', 'seguridad-web', 'testing'],
+        courses: ['algoritmos', 'expresiones-regulares', 'git-esencial', 'sql-basico', 'seguridad-web', 'testing'],
     },
 ];

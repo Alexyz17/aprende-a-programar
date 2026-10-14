@@ -3,7 +3,7 @@ import { lazy, createElement } from 'react';
 import type { LucideIcon } from 'lucide-react';
 import {
     Terminal, Server, Code2, Brain, Zap, Shield, Smartphone, Globe, Database,
-    GitBranch, Cloud, Cpu, Package, Layers, Lightbulb, Palette, FlaskConical, Network, BarChart3,
+    GitBranch, Cloud, Cpu, Package, Layers, Lightbulb, Palette, FlaskConical, Network, BarChart3, Coffee, Leaf, Regex,
 } from 'lucide-react';
 
 export type Level = 'Básico' | 'Intermedio' | 'Avanzado';
@@ -33,7 +33,7 @@ const md = (slug: string, loader: () => Promise<{ default: string }>) =>
 
 export const CATEGORIES = [
     'Empieza aquí', 'Web', 'Linux', 'PHP / Laravel', 'JavaScript', 'Frontend', 'Python',
-    'Bases de datos', 'Git', 'DevOps', 'Servidores', 'Seguridad', 'Arquitectura',
+    'Java', 'Bases de datos', 'Git', 'DevOps', 'Servidores', 'Seguridad', 'Arquitectura',
     'Análisis de datos', 'Inteligencia Artificial', 'Automatización', 'Mobile',
 ] as const;
 
@@ -45,6 +45,7 @@ export const COURSES: Course[] = [
     // ── Empieza aquí ──
     { slug: 'programar-desde-cero', title: 'Programar desde cero', description: 'Qué es programar, cómo piensa un ordenador, variables, condiciones, bucles y funciones explicados sin dar nada por sabido.', duration: '2h 30min', lessons: 10, level: 'Básico', category: 'Empieza aquí', icon: Lightbulb, iconColor: 'text-amber-400', bg: 'bg-amber-500/10', page: md('programar-desde-cero', () => import('@/content/programar-desde-cero.md?raw')) },
     { slug: 'algoritmos', title: 'Algoritmos y estructuras de datos', description: 'Complejidad, arrays, mapas, pilas, colas, árboles, búsqueda, ordenación, recursividad y cómo enfrentarte a un problema de entrevista.', duration: '4h 00min', lessons: 14, level: 'Intermedio', category: 'Empieza aquí', icon: Network, iconColor: 'text-amber-400', bg: 'bg-amber-500/10', page: md('algoritmos', () => import('@/content/algoritmos.md?raw')) },
+    { slug: 'expresiones-regulares', title: 'Expresiones regulares', description: 'Valida, busca y reemplaza texto con patrones: clases, cuantificadores, grupos, lookarounds y su uso en JavaScript, Python, PHP y la terminal.', duration: '2h 30min', lessons: 13, level: 'Intermedio', category: 'Empieza aquí', icon: Regex, iconColor: 'text-amber-400', bg: 'bg-amber-500/10', page: md('expresiones-regulares', () => import('@/content/expresiones-regulares.md?raw')) },
     // ── Web ──
     { slug: 'html-css', title: 'HTML y CSS desde cero', description: 'Estructura una página con HTML semántico y dale estilo con CSS: box model, Flexbox, Grid, diseño responsive y accesibilidad.', duration: '4h 00min', lessons: 16, level: 'Básico', category: 'Web', icon: Palette, iconColor: 'text-pink-400', bg: 'bg-pink-500/10', page: md('html-css', () => import('@/content/html-css.md?raw')) },
     { slug: 'tailwind-css', title: 'Tailwind CSS', description: 'Estiliza con clases de utilidad: espaciado, Flexbox y Grid, responsive, estados, modo oscuro, tema propio con @theme y componentes reutilizables.', duration: '2h 45min', lessons: 10, level: 'Básico', category: 'Web', icon: Palette, iconColor: 'text-pink-400', bg: 'bg-pink-500/10', page: md('tailwind-css', () => import('@/content/tailwind-css.md?raw')) },
@@ -77,6 +78,8 @@ export const COURSES: Course[] = [
     { slug: 'javascript-moderno', title: 'JavaScript moderno', description: 'Destructuring, async/await, módulos ES, Fetch API y las novedades del lenguaje.', duration: '3h 15min', lessons: 16, level: 'Intermedio', category: 'JavaScript', icon: Zap, iconColor: 'text-yellow-300', bg: 'bg-yellow-500/10', page: p(() => import('@/Pages/Lecciones/JavaScriptModerno')) },
     { slug: 'typescript-basico', title: 'TypeScript desde cero', description: 'Tipos, interfaces, generics y tsconfig. La base para escribir JavaScript con seguridad de tipos.', duration: '2h 45min', lessons: 13, level: 'Básico', category: 'JavaScript', icon: Code2, iconColor: 'text-yellow-300', bg: 'bg-yellow-500/10', page: p(() => import('@/Pages/Lecciones/TypeScriptBasico')) },
     { slug: 'node-express', title: 'Node.js y Express', description: 'Crea servidores y APIs con JavaScript: módulos, npm, Express, middleware, validación, base de datos y despliegue.', duration: '3h 45min', lessons: 16, level: 'Intermedio', category: 'JavaScript', icon: Server, iconColor: 'text-yellow-300', bg: 'bg-yellow-500/10', page: md('node-express', () => import('@/content/node-express.md?raw')) },
+    // ── Java ──
+    { slug: 'java-basico', title: 'Java desde cero', description: 'Tipos, Strings, colecciones, clases, records, interfaces, excepciones, streams y proyectos con Maven y JUnit.', duration: '4h 30min', lessons: 16, level: 'Básico', category: 'Java', icon: Coffee, iconColor: 'text-fuchsia-400', bg: 'bg-fuchsia-500/10', page: md('java-basico', () => import('@/content/java-basico.md?raw')) },
     // ── Git ──
     { slug: 'git-esencial', title: 'Git esencial', description: 'Init, add, commit, push, ramas, merge y flujo de trabajo en equipo.', duration: '2h 15min', lessons: 11, level: 'Básico', category: 'Git', icon: GitBranch, iconColor: 'text-orange-400', bg: 'bg-orange-500/10', page: p(() => import('@/Pages/Lecciones/GitEsencial')) },
     // ── Mobile ──
@@ -94,6 +97,7 @@ export const COURSES: Course[] = [
     { slug: 'sql-basico', title: 'SQL desde cero', description: 'Diseña tablas y consulta datos: SELECT, filtros, JOIN, agregaciones, claves, índices y transacciones con ejemplos prácticos.', duration: '3h 30min', lessons: 15, level: 'Básico', category: 'Bases de datos', icon: Database, iconColor: 'text-violet-400', bg: 'bg-violet-500/10', page: md('sql-basico', () => import('@/content/sql-basico.md?raw')) },
     { slug: 'postgresql-avanzado', title: 'PostgreSQL avanzado', description: 'Índices, EXPLAIN ANALYZE, CTEs, window functions, particionado y búsqueda semántica con pgvector.', duration: '4h 30min', lessons: 22, level: 'Avanzado', category: 'Bases de datos', icon: Database, iconColor: 'text-violet-400', bg: 'bg-violet-500/10', page: p(() => import('@/Pages/Lecciones/PostgreSQLAvanzado')) },
     { slug: 'redis-cache', title: 'Redis: caché y mensajería', description: 'Estructuras de datos, patrones de caché, expiración, pub/sub, streams y colas.', duration: '3h 30min', lessons: 18, level: 'Intermedio', category: 'Bases de datos', icon: Database, iconColor: 'text-violet-400', bg: 'bg-violet-500/10', page: md('redis-cache', () => import('@/content/redis-cache.md?raw')) },
+    { slug: 'mongodb', title: 'MongoDB desde cero', description: 'Documentos y colecciones, consultas, actualizaciones, modelado, índices, agregaciones, validación y uso desde Node.js.', duration: '3h 45min', lessons: 15, level: 'Intermedio', category: 'Bases de datos', icon: Leaf, iconColor: 'text-green-400', bg: 'bg-green-500/10', page: md('mongodb', () => import('@/content/mongodb.md?raw')) },
     // ── Análisis de datos ──
     { slug: 'power-bi', title: 'Power BI desde cero', description: 'Del CSV al informe publicado: Power Query, modelo en estrella, DAX con CALCULATE e inteligencia de tiempo, visualizaciones, RLS y buenas prácticas.', duration: '4h 00min', lessons: 16, level: 'Básico', category: 'Análisis de datos', icon: BarChart3, iconColor: 'text-lime-400', bg: 'bg-lime-500/10', page: md('power-bi', () => import('@/content/power-bi.md?raw')) },
     // ── Arquitectura ──

@@ -636,6 +636,48 @@ export const GAMES: Game[] = [
             { question: '¿Qué separa CQRS?', options: ['El modelo de escritura del modelo de lectura', 'El frontend del backend', 'Los tests de producción', 'El código de la configuración'], answer: 'El modelo de escritura del modelo de lectura', explanation: 'Command Query Responsibility Segregation: cada lado se optimiza para lo suyo.', points: 200 },
         ],
     },
+    {
+        slug: 'quiz-java',
+        title: 'Test de Java',
+        description: 'Tipos, Strings, colecciones, clases y excepciones.',
+        type: 'quiz', course: 'java-basico', difficulty: 'medium',
+        questions: [
+            { question: '¿Cómo se comparan dos String por su contenido en Java?', options: ['a.equals(b)', 'a == b', 'a === b', 'compare(a, b)'], answer: 'a.equals(b)', explanation: '== compara si son el mismo objeto en memoria, no si tienen el mismo texto.', points: 150 },
+            { question: '¿Cuánto vale 7 / 2 si ambos son int?', options: ['3', '3.5', '4', 'Da error'], answer: '3', explanation: 'La división entre enteros descarta los decimales. Usa 7 / 2.0 para obtener 3.5.', points: 120 },
+            { question: '¿Qué colección usarías para guardar pares clave → valor?', options: ['Map', 'List', 'Set', 'Array'], answer: 'Map', explanation: 'HashMap es la implementación más habitual.', points: 100 },
+            { question: '¿Qué te ahorra un record?', options: ['Constructor, getters, equals, hashCode y toString', 'La compilación', 'Los imports', 'El método main'], answer: 'Constructor, getters, equals, hashCode y toString', explanation: 'record Producto(String nombre, double precio) {} genera todo eso y es inmutable.', points: 150 },
+            { question: '¿Qué hace try-with-resources?', options: ['Cierra automáticamente los recursos al terminar', 'Reintenta el código si falla', 'Ignora las excepciones', 'Ejecuta en otro hilo'], answer: 'Cierra automáticamente los recursos al terminar', explanation: 'Archivos y conexiones se cierran aunque haya una excepción.', points: 150 },
+            { question: '¿Por qué List<int> no compila?', options: ['Las colecciones no admiten tipos primitivos; se usa List<Integer>', 'Porque int no existe', 'Porque List es abstracta', 'Sí compila'], answer: 'Las colecciones no admiten tipos primitivos; se usa List<Integer>', explanation: 'Los genéricos trabajan con objetos; Java convierte int ↔ Integer automáticamente.', points: 150 },
+        ],
+    },
+    {
+        slug: 'adivina-output-regex',
+        title: 'Adivina la salida con regex',
+        description: 'Lee el código JavaScript con expresiones regulares y escribe lo que imprime.',
+        type: 'guess_output', course: 'expresiones-regulares', difficulty: 'hard',
+        questions: [
+            { question: "console.log(/^\\d{5}$/.test('08221'));", answer: 'true', explanation: 'Exactamente cinco dígitos de principio a fin.', points: 100 },
+            { question: "console.log('a1b22c333'.match(/\\d+/g).length);", answer: '3', explanation: 'Con g devuelve todas las coincidencias: 1, 22 y 333.', points: 120 },
+            { question: "console.log('14/10/2026'.replace(/(\\d+)\\/(\\d+)\\/(\\d+)/, '$3-$2-$1'));", answer: '2026-10-14', explanation: '$1, $2 y $3 insertan lo capturado por cada grupo.', points: 150 },
+            { question: "console.log('<b>a</b><b>b</b>'.match(/<b>.*?<\\/b>/)[0]);", answer: '<b>a</b>', explanation: '.*? es perezoso: se detiene en el primer cierre posible.', points: 150 },
+            { question: "console.log(/\\bcasa\\b/.test('casamiento'));", answer: 'false', explanation: '\\b exige un límite de palabra justo después de "casa".', points: 150 },
+            { question: "console.log('100€ 200$'.match(/\\d+(?=\\$)/)[0]);", answer: '200', explanation: 'El lookahead (?=\\$) exige que detrás venga un $, sin incluirlo.', points: 200 },
+        ],
+    },
+    {
+        slug: 'quiz-mongodb',
+        title: 'Test de MongoDB',
+        description: 'Documentos, operadores, modelado, índices y agregaciones.',
+        type: 'quiz', course: 'mongodb', difficulty: 'medium',
+        questions: [
+            { question: '¿Cómo se llama en MongoDB el equivalente a una tabla?', options: ['Colección', 'Documento', 'Esquema', 'Índice'], answer: 'Colección', explanation: 'Una base de datos tiene colecciones y cada colección tiene documentos.', points: 80 },
+            { question: '¿Qué filtro busca productos con precio mayor que 20?', options: ['{ precio: { $gt: 20 } }', '{ precio > 20 }', '{ precio: { $lt: 20 } }', "{ precio: '>20' }"], answer: '{ precio: { $gt: 20 } }', explanation: '$gt es greater than. $gte incluye el 20.', points: 100 },
+            { question: '¿Qué operador cambia solo un campo sin tocar el resto del documento?', options: ['$set', '$push', '$unset', '$group'], answer: '$set', explanation: 'replaceOne en cambio sustituye el documento entero.', points: 120 },
+            { question: 'Un cliente puede tener miles de pedidos. ¿Cómo los guardas?', options: ['En su propia colección, con el id del cliente', 'Incrustados en el documento del cliente', 'En un solo campo de texto', 'En un índice'], answer: 'En su propia colección, con el id del cliente', explanation: 'Una lista que crece sin límite no debe incrustarse: el documento tiene un máximo de 16 MB.', points: 150 },
+            { question: '¿Qué etapa de agregación equivale a GROUP BY?', options: ['$group', '$match', '$project', '$lookup'], answer: '$group', explanation: '$match filtra, $project elige campos y $lookup une colecciones.', points: 120 },
+            { question: 'En explain(), ¿qué indica COLLSCAN?', options: ['Que recorre toda la colección sin usar un índice', 'Que la consulta es perfecta', 'Que la colección está vacía', 'Que hay un error'], answer: 'Que recorre toda la colección sin usar un índice', explanation: 'Lo que buscas es IXSCAN, que significa que la consulta usa un índice.', points: 150 },
+        ],
+    },
 ];
 
 export const gameBySlug = (slug: string) => GAMES.find((g) => g.slug === slug);
