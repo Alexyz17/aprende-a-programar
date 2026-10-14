@@ -1,12 +1,13 @@
 import AppLayout from '@/layouts/AppLayout';
 import { Link } from '@/lib/router';
 import { usePath } from '@/lib/router';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ChevronRight, BookOpen, Clock, CheckCircle2, Circle, ArrowLeft, ArrowRight, Pencil } from 'lucide-react';
 import VideoPlayer from '@/components/VideoPlayer';
 import { COURSES, coursePath } from '@/data/courses';
 import { toggleCompleted, useProgress } from '@/lib/progress';
 import { SITE } from '@/site';
+import { enhanceCodeBlocks, handleCopyClick } from '@/lib/highlight';
 
 export interface Module {
     id: string;
@@ -105,6 +106,10 @@ export default function LessonLayout({
         const hash = decodeURIComponent(window.location.hash.slice(1));
         if (hash) document.getElementById(hash)?.scrollIntoView({ block: 'start' });
     }, [slug]);
+
+    // Resaltado de sintaxis y botón de copiar en todos los bloques de código (Markdown y TSX).
+    const articleRef = useRef<HTMLElement>(null);
+    useEffect(() => { if (articleRef.current) enhanceCodeBlocks(articleRef.current); }, [slug]);
 
     // Resalta en el índice el apartado que se está leyendo.
     const [current, setCurrent] = useState<string | null>(null);
@@ -214,7 +219,7 @@ export default function LessonLayout({
                     {/* ── Contenido ── */}
                     <div className="flex-1 min-w-0">
                         {videoId && <VideoPlayer videoId={videoId} title={title} />}
-                        <article className={articleClass}>{children}</article>
+                        <article ref={articleRef} className={articleClass} onClick={(e) => handleCopyClick(e.target as HTMLElement)}>{children}</article>
 
                         <div className="mt-12 rounded-2xl border border-dashed border-gray-300 dark:border-gray-700 p-5 text-sm text-gray-600 dark:text-gray-400 flex flex-col sm:flex-row sm:items-center gap-3 justify-between">
                             <span>¿Has visto un error o quieres ampliar esta lección? El contenido es abierto.</span>

@@ -47,8 +47,9 @@ function parse(md: string): Parsed {
                 return `<h${depth} id="${id}">${inner}</h${depth}>`;
             },
             code({ text, lang }) {
-                const label = lang ? `<span class="md-code-lang">${escapeHtml(lang)}</span>` : '';
-                return `<div class="md-code">${label}<pre><code>${escapeHtml(text)}</code></pre></div>`;
+                const l = escapeHtml((lang ?? '').split(/\s/)[0]);
+                return `<div class="md-code"><div class="md-code-bar"><span>${l || 'código'}</span><button type="button" class="md-copy">Copiar</button></div>`
+                    + `<pre><code data-lang="${l}">${escapeHtml(text)}</code></pre></div>`;
             },
             link({ href, title: t, tokens }) {
                 const inner = this.parser.parseInline(tokens);

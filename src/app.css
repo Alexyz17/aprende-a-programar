@@ -17,11 +17,30 @@ html { scroll-behavior: smooth; }
 
 /* ── Lecciones en Markdown ── */
 .md-lesson .md-code { position: relative; }
-.md-lesson .md-code-lang {
-    position: absolute; top: 0.5rem; right: 0.75rem;
-    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em;
-    color: #94a3b8; font-family: ui-monospace, monospace;
+.md-lesson .md-code { margin: 1.25rem 0; border-radius: 0.75rem; overflow: hidden; border: 1px solid #1e293b; }
+.md-lesson .md-code pre { margin: 0 !important; border: 0 !important; border-radius: 0 !important; }
+.md-code-bar {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding: 0.35rem 0.75rem 0.35rem 1rem; background: #0b1324; border-bottom: 1px dashed #1f3a33;
+    font: 600 0.7rem/1.6 ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.08em; color: #6ee7b7;
 }
+.md-copy {
+    font: 500 0.72rem/1 ui-sans-serif, system-ui, sans-serif; text-transform: none; letter-spacing: 0;
+    color: #cbd5e1; padding: 0.35rem 0.6rem; border-radius: 0.4rem; border: 1px solid #334155; background: #0f172a; cursor: pointer;
+}
+.md-copy:hover { color: #fff; border-color: #10b981; }
+.md-copy-float { position: absolute; top: 0.5rem; right: 0.5rem; opacity: 0; transition: opacity .15s; }
+pre:hover > .md-copy-float, .md-copy-float:focus-visible { opacity: 1; }
+@media (hover: none) { .md-copy-float { opacity: 1; } }
+
+/* ── Resaltado de sintaxis (fondo siempre oscuro, contraste AA sobre #020617) ── */
+.tk-c { color: #8b9bb4; font-style: italic; }
+.tk-s { color: #86efac; }
+.tk-k { color: #f0abfc; font-weight: 600; }
+.tk-n { color: #fcd34d; }
+.tk-f { color: #7dd3fc; }
+.tk-t { color: #fda4af; }
+.tk-v { color: #fdba74; }
 .md-lesson .md-table { overflow-x: auto; }
 .md-lesson .md-table table { display: table; }
 .md-lesson blockquote.md-callout { border-left-width: 4px; }

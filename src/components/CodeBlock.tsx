@@ -78,8 +78,8 @@ export default function CodeBlock({
             </div>
 
             {/* Code */}
-            <pre className="!my-0 !rounded-none !border-0 overflow-x-auto bg-[#0d1117] text-slate-100 px-6 py-5 text-[0.8125rem] leading-[1.7] font-mono">
-                <code>{showLineNumbers
+            <pre data-nocopy className="!my-0 !rounded-none !border-0 overflow-x-auto bg-[#0d1117] text-slate-100 px-6 py-5 text-[0.8125rem] leading-[1.7] font-mono">
+                <code data-lang={language} data-hl={showLineNumbers ? '1' : undefined}>{showLineNumbers
                     ? code.trim().split('\n').map((l, i) => <span key={i} className="block"><span className="inline-block w-8 pr-4 text-right text-slate-600 select-none">{i + 1}</span>{l}</span>)
                     : code.trim()}</code>
             </pre>

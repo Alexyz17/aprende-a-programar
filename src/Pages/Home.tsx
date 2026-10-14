@@ -26,7 +26,7 @@ export default function Home() {
 
             {/* Portada */}
             <section className="relative overflow-hidden border-b border-gray-200 dark:border-gray-800">
-                <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(99,102,241,0.18),transparent_60%)]" aria-hidden />
+                <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.16),transparent_60%)]" aria-hidden />
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 text-center">
                     <p className="inline-flex items-center gap-2 text-sm font-medium text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-900/30 px-3 py-1 rounded-full mb-6">
                         Gratis · Sin registro · Contenido abierto
