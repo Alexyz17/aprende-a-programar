@@ -678,6 +678,34 @@ export const GAMES: Game[] = [
             { question: 'En explain(), ¿qué indica COLLSCAN?', options: ['Que recorre toda la colección sin usar un índice', 'Que la consulta es perfecta', 'Que la colección está vacía', 'Que hay un error'], answer: 'Que recorre toda la colección sin usar un índice', explanation: 'Lo que buscas es IXSCAN, que significa que la consulta usa un índice.', points: 150 },
         ],
     },
+    {
+        slug: 'quiz-accesibilidad',
+        title: 'Test de accesibilidad web',
+        description: 'WCAG, HTML semántico, contraste, teclado y ARIA.',
+        type: 'quiz', course: 'accesibilidad-web', difficulty: 'medium',
+        questions: [
+            { question: '¿Qué contraste mínimo pide WCAG AA para texto normal?', options: ['4,5 : 1', '2 : 1', '3 : 1', '7 : 1'], answer: '4,5 : 1', explanation: '3 : 1 basta para texto grande; 7 : 1 es el nivel AAA.', points: 120 },
+            { question: '¿Qué alt pondrías a una imagen puramente decorativa?', options: ['alt=""', 'alt="imagen"', 'alt="decoración"', 'Ninguno: se quita el atributo'], answer: 'alt=""', explanation: 'Un alt vacío indica al lector de pantalla que la ignore. Sin atributo, leería el nombre del archivo.', points: 120 },
+            { question: '¿Por qué es mejor <button> que un <div> con onclick?', options: ['Se enfoca con el teclado, responde a Enter y Espacio y se anuncia como botón', 'Porque pesa menos', 'Porque se ve más bonito', 'No hay diferencia'], answer: 'Se enfoca con el teclado, responde a Enter y Espacio y se anuncia como botón', explanation: 'El HTML semántico da accesibilidad gratis; con un div tendrías que programarlo todo.', points: 150 },
+            { question: '¿Cuál es la primera regla de ARIA?', options: ['No usar ARIA si un elemento HTML nativo ya lo resuelve', 'Usar aria-label en todos los elementos', 'Poner role en cada div', 'Ocultar los iconos con display: none'], answer: 'No usar ARIA si un elemento HTML nativo ya lo resuelve', explanation: 'Un ARIA mal usado empeora la experiencia más que no ponerlo.', points: 150 },
+            { question: '¿Qué hay que hacer con el contorno de foco (outline)?', options: ['Mantenerlo visible o sustituirlo por otro estilo visible', 'Quitarlo siempre con outline: none', 'Mostrarlo solo al pasar el ratón', 'Nada, no afecta a nadie'], answer: 'Mantenerlo visible o sustituirlo por otro estilo visible', explanation: 'Sin foco visible, quien navega con teclado no sabe dónde está.', points: 120 },
+            { question: '¿Por qué el placeholder no sustituye a un <label>?', options: ['Desaparece al escribir y suele tener poco contraste', 'Porque no existe en HTML5', 'Porque solo funciona en Chrome', 'Sí lo sustituye'], answer: 'Desaparece al escribir y suele tener poco contraste', explanation: 'Usa <label for> siempre; el placeholder, como mucho, para un ejemplo de formato.', points: 120 },
+        ],
+    },
+    {
+        slug: 'completa-excel',
+        title: 'Completa la fórmula de Excel',
+        description: 'Escribe la función que falta en cada fórmula de Excel en español.',
+        type: 'fill_code', course: 'excel-datos', difficulty: 'medium',
+        questions: [
+            { question: '=___(Ventas[Importe]) // total de la columna', answer: 'SUMA', accept: ['suma'], explanation: 'SUMA suma todos los números del rango.', points: 80 },
+            { question: '=___(Ventas[Zona];"Norte";Ventas[Importe]) // suma solo el Norte', answer: 'SUMAR.SI', accept: ['sumar.si'], explanation: 'SUMAR.SI(rango con la condición; condición; rango a sumar).', points: 120 },
+            { question: '=___([@Producto];Productos[Producto];Productos[Coste];"No encontrado")', answer: 'BUSCARX', accept: ['buscarx'], explanation: 'BUSCARX busca en una columna y devuelve el valor de otra, con un valor por defecto.', points: 150 },
+            { question: '=___(Ventas[Vendedor]) // lista de vendedores sin repetir', answer: 'UNICOS', accept: ['unicos', 'ÚNICOS'], explanation: 'UNICOS devuelve una matriz dinámica que se derrama hacia abajo.', points: 120 },
+            { question: '=___(Ventas;Ventas[Zona]="Sur") // solo las filas del Sur', answer: 'FILTRAR', accept: ['filtrar'], explanation: 'FILTRAR devuelve las filas que cumplen la condición.', points: 120 },
+            { question: '=SI.___([@Importe]/[@Unidades];0) // 0 si hay error', answer: 'ERROR', accept: ['error'], explanation: 'SI.ERROR muestra un valor alternativo cuando la fórmula da error.', points: 100 },
+        ],
+    },
 ];
 
 export const gameBySlug = (slug: string) => GAMES.find((g) => g.slug === slug);

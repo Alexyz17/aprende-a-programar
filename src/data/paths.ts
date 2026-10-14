@@ -20,7 +20,7 @@ export const PATHS: LearningPath[] = [
         title: 'Desarrollo frontend',
         description: 'Construye interfaces web modernas, accesibles y rápidas.',
         goal: 'Crear aplicaciones web con React y TypeScript listas para producción.',
-        courses: ['html-css', 'tailwind-css', 'javascript-moderno', 'typescript-basico', 'react-basico', 'react-avanzado', 'nextjs', 'vuejs', 'testing'],
+        courses: ['html-css', 'tailwind-css', 'accesibilidad-web', 'javascript-moderno', 'typescript-basico', 'react-basico', 'react-avanzado', 'nextjs', 'vuejs', 'testing'],
     },
     {
         slug: 'backend-php',
@@ -55,7 +55,7 @@ export const PATHS: LearningPath[] = [
         title: 'Datos e inteligencia artificial',
         description: 'Python para datos, machine learning y modelos de lenguaje.',
         goal: 'Entrenar modelos sencillos e integrar IA en tus aplicaciones.',
-        courses: ['python-basico', 'python-avanzado', 'sql-basico', 'power-bi', 'machine-learning', 'ia-programacion', 'fine-tuning', 'n8n'],
+        courses: ['python-basico', 'python-avanzado', 'sql-basico', 'excel-datos', 'power-bi', 'machine-learning', 'ia-programacion', 'fine-tuning', 'n8n'],
     },
     {
         slug: 'mobile',

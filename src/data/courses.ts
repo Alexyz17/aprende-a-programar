@@ -3,7 +3,7 @@ import { lazy, createElement } from 'react';
 import type { LucideIcon } from 'lucide-react';
 import {
     Terminal, Server, Code2, Brain, Zap, Shield, Smartphone, Globe, Database,
-    GitBranch, Cloud, Cpu, Package, Layers, Lightbulb, Palette, FlaskConical, Network, BarChart3, Coffee, Leaf, Regex,
+    GitBranch, Cloud, Cpu, Package, Layers, Lightbulb, Palette, FlaskConical, Network, BarChart3, Coffee, Leaf, Regex, Accessibility, FileSpreadsheet,
 } from 'lucide-react';
 
 export type Level = 'Básico' | 'Intermedio' | 'Avanzado';
@@ -49,6 +49,7 @@ export const COURSES: Course[] = [
     // ── Web ──
     { slug: 'html-css', title: 'HTML y CSS desde cero', description: 'Estructura una página con HTML semántico y dale estilo con CSS: box model, Flexbox, Grid, diseño responsive y accesibilidad.', duration: '4h 00min', lessons: 16, level: 'Básico', category: 'Web', icon: Palette, iconColor: 'text-pink-400', bg: 'bg-pink-500/10', page: md('html-css', () => import('@/content/html-css.md?raw')) },
     { slug: 'tailwind-css', title: 'Tailwind CSS', description: 'Estiliza con clases de utilidad: espaciado, Flexbox y Grid, responsive, estados, modo oscuro, tema propio con @theme y componentes reutilizables.', duration: '2h 45min', lessons: 10, level: 'Básico', category: 'Web', icon: Palette, iconColor: 'text-pink-400', bg: 'bg-pink-500/10', page: md('tailwind-css', () => import('@/content/tailwind-css.md?raw')) },
+    { slug: 'accesibilidad-web', title: 'Accesibilidad web', description: 'Webs que puede usar todo el mundo: WCAG, HTML semántico, contraste, teclado y foco, formularios, ARIA, componentes y cómo probarlo.', duration: '3h 00min', lessons: 13, level: 'Intermedio', category: 'Web', icon: Accessibility, iconColor: 'text-pink-400', bg: 'bg-pink-500/10', page: md('accesibilidad-web', () => import('@/content/accesibilidad-web.md?raw')) },
     { slug: 'testing', title: 'Testing para desarrolladores web', description: 'Por qué y qué testear, tests unitarios y de integración con Vitest, PHPUnit y Pest, mocks, testing de componentes y TDD.', duration: '3h 30min', lessons: 14, level: 'Intermedio', category: 'Web', icon: FlaskConical, iconColor: 'text-pink-400', bg: 'bg-pink-500/10', page: md('testing', () => import('@/content/testing.md?raw')) },
     // ── Linux ──
     { slug: 'linux-esencial', title: 'Introducción a Linux', description: 'Aprende a moverte por la terminal, gestionar archivos y entender el sistema operativo más usado en servidores.', duration: '2h 30min', lessons: 12, level: 'Básico', category: 'Linux', icon: Terminal, iconColor: 'text-orange-400', bg: 'bg-orange-500/10', page: p(() => import('@/Pages/Lecciones/LinuxEsencial')) },
@@ -99,6 +100,7 @@ export const COURSES: Course[] = [
     { slug: 'redis-cache', title: 'Redis: caché y mensajería', description: 'Estructuras de datos, patrones de caché, expiración, pub/sub, streams y colas.', duration: '3h 30min', lessons: 18, level: 'Intermedio', category: 'Bases de datos', icon: Database, iconColor: 'text-violet-400', bg: 'bg-violet-500/10', page: md('redis-cache', () => import('@/content/redis-cache.md?raw')) },
     { slug: 'mongodb', title: 'MongoDB desde cero', description: 'Documentos y colecciones, consultas, actualizaciones, modelado, índices, agregaciones, validación y uso desde Node.js.', duration: '3h 45min', lessons: 15, level: 'Intermedio', category: 'Bases de datos', icon: Leaf, iconColor: 'text-green-400', bg: 'bg-green-500/10', page: md('mongodb', () => import('@/content/mongodb.md?raw')) },
     // ── Análisis de datos ──
+    { slug: 'excel-datos', title: 'Excel para análisis de datos', description: 'Tablas, BUSCARX, funciones condicionales, matrices dinámicas, tablas dinámicas, gráficos y Power Query para dejar de copiar y pegar.', duration: '3h 15min', lessons: 13, level: 'Básico', category: 'Análisis de datos', icon: FileSpreadsheet, iconColor: 'text-lime-400', bg: 'bg-lime-500/10', page: md('excel-datos', () => import('@/content/excel-datos.md?raw')) },
     { slug: 'power-bi', title: 'Power BI desde cero', description: 'Del CSV al informe publicado: Power Query, modelo en estrella, DAX con CALCULATE e inteligencia de tiempo, visualizaciones, RLS y buenas prácticas.', duration: '4h 00min', lessons: 16, level: 'Básico', category: 'Análisis de datos', icon: BarChart3, iconColor: 'text-lime-400', bg: 'bg-lime-500/10', page: md('power-bi', () => import('@/content/power-bi.md?raw')) },
     // ── Arquitectura ──
     { slug: 'microservicios-diseno', title: 'Diseño de microservicios', description: 'Cuándo usarlos, cómo dividir servicios, API Gateway, mensajería, sagas, Event Sourcing y CQRS.', duration: '4h 30min', lessons: 20, level: 'Avanzado', category: 'Arquitectura', icon: Layers, iconColor: 'text-orange-400', bg: 'bg-orange-500/10', page: md('microservicios-diseno', () => import('@/content/microservicios-diseno.md?raw')) },
